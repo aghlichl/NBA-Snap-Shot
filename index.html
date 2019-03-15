@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="tree.css">
+    <title>NBA Snap SHOT</title>
+
+</head>
+
+<body>
+    
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.10/d3.min.js"></script>
+
+    <script src="dist/bundle.js"></script>
+        <h1>NBA</h1>
+
+
+    <script>
+        var pubs =
+            {
+                "name": "NBA",
+                "children": [
+                    {
+                        "name": "ATL", "children": [
+                            { "name": "Justin Anderson" },
+                            { "name": "Kent Bazemore" },
+                            { "name": "Taurean Prince" },
+                            { "name": "DeAndre' Bembry" },
+                            { "name": "Miles Plumlee" },
+                            { "name": "John Collins" },
+                            { "name": "Dewayne Dedmon" },
+                            { "name": "Trae Young" },
+                            { "name": "Kevin Huerter" },
+                            { "name": "Omari Spellman" },
+                            { "name": "Jaylen Adams" },
+                            { "name": "Alex Len" },
+                            { "name": "Alex Poythress" },
+                            { "name": "Vince Carter" },
+                            { "name": "B.J. Johnson" },
+                            { "name": "Tyler Zeller" },
+                        ]
+                    },
+                    {
+                        "name": "BOS", "children": [
+                            { "name": "Kyrie Irving" },
+                            { "name": "Marcus Morris" },
+                            { "name": "Terry Rozier" },
+                            { "name": "Al Horford" },
+                            { "name": "Jaylen Brown" },
+                            { "name": "Jayson Tatum" },
+                            { "name": "Gordon Hayward" },
+                            { "name": "Semi Ojeleye" },
+                            { "name": "Guerschon Yabusele" },
+                            { "name": "Daniel Theis" },
+                            { "name": "Brad Wanamaker" },
+                            { "name": "Robert Williams" },
+                            { "name": "Aron Baynes" },
+                            { "name": "Marcus Smart" },
+                            { "name": "PJ Dozier" },
+                            { "name": "R.J. Hunter" },
+                        ]
+                    },
+                    {
+                        "name": "BKN", "children": [
+                            { "name": "D'Angelo Russell" },
+                            { "name": "Rondae Hollis-Jefferson" },
+                            { "name": "DeMarre Carroll" },
+                            { "name": "Allen Crabbe" },
+                            { "name": "Caris LeVert" },
+                            { "name": "Jared Dudley" },
+                            { "name": "Spencer Dinwiddie" },
+                            { "name": "Jarrett Allen" },
+                            { "name": "Dzanan Musa" },
+                            { "name": "Rodions Kurucs" },
+                            { "name": "Shabazz Napier" },
+                            { "name": "Ed Davis" },
+                            { "name": "Joe Harris" },
+                            { "name": "Treveon Graham" },
+                            { "name": "Theo Pinson" },
+                            { "name": "Alan Williams" },
+                            { "name": "Alan Williams" },
+                            { "name": "Alan Williams" },
+                        ]
+                    },
+                    {
+                        "name": "CHA", "children": [
+                        { "name": "Michael Kidd-Gilchrist" },
+                        { "name": "Kemba Walker" },
+                        { "name": "Cody Zeller" },
+                        { "name": "Jeremy Lamb" },
+                        { "name": "Frank Kaminsky" },
+                        { "name": "Nicolas Batum" },
+                        { "name": "Bismack Biyombo" },
+                        { "name": "Marvin Williams" },
+                        { "name": "Willy Hernangomez" },
+                        { "name": "Malik Monk" },
+                        { "name": "Dwayne Bacon" },
+                        { "name": "Miles Bridges" },
+                        { "name": "J.P. Macura" },
+                        { "name": "Devonte' Graham" },
+                        { "name": "Tony Parker" },
+                        { "name": "Shelvin Mack" },
+                        { "name": "Joe Chealey" },
+                    ]
+                    },
+                    {
+                        "name": "CHI", "children": [
+                            { "name": "Robin Lopez" },
+                            { "name": "Timothe Luwawu-Cabarrot" },
+                            { "name": "Denzel Valentine" },
+                            { "name": "Kris Dunn" },
+                            { "name": "Lauri Markkanen" },
+                            { "name": "Cristiano Felicio" },
+                            { "name": "Otto Porter" },
+                            { "name": "Wayne Selden" },
+                            { "name": "Chandler Hutchison" },
+                            { "name": "Wendell Carter Jr." },
+                            { "name": "Zach LaVine" },
+                            { "name": "Antonio Blakeney" },
+                            { "name": "Ryan Arcidiacono" },
+                            { "name": "Rawle Alkins" },
+                            { "name": "Shaquille Harrison" },
+                            { "name": "Brandon Sampson" },
+                        ]
+                    },
+                    {
+                        "name": "CLE", "children": [
+                            { "name": "John Henson" },
+                            { "name": "Larry Nance Jr." },
+                            { "name": "Brandon Knight" },
+                            { "name": "Kevin Love" },
+                            { "name": "Tristan Thompson" },
+                            { "name": "Jordan Clarkson" },
+                            { "name": "Matthew Dellavedova" },
+                            { "name": "Marquese Chriss" },
+                            { "name": "J.R. Smith" },
+                            { "name": "Ante Zizic" },
+                            { "name": "Cedi Osman" },
+                            { "name": "Collin Sexton" },
+                            { "name": "Channing Frye" },
+                            { "name": "David Nwaba" },
+                            { "name": "Jaron Blossomgame" },
+                            { "name": "Deng Adel" },
+                            { "name": "Nik Stauskas" },
+                        ]
+                    },
+                    {
+                        "name": "DAL", "children": [
+                        { "name": "Kristaps Porzingis" },
+                        { "name": "J.J. Barea" },
+                        { "name": "Dwight Powell" },
+                        { "name": "Dorian Finney-Smith" },
+                        { "name": "Courtney Lee" },
+                        { "name": "Justin Jackson" },
+                        { "name": "Tim Hardaway Jr." },
+                        { "name": "Maxi Kleber" },
+                        { "name": "Trey Burke" },
+                        { "name": "Luka Doncic" },
+                        { "name": "Ryan Broekhoff" },
+                        { "name": "Kostas Antetokounmpo" },
+                        { "name": "Jalen Brunson" },
+                        { "name": "Dirk Nowitzki" },
+                        { "name": "Daryl Macon" },
+                        { "name": "Devin Harris" },
+                    ]
+                    },
+                    {
+                        "name": "DEN", "children": [
+                            { "name": "Trey Lyles" },
+                            { "name": "Malik Beasley" },
+                            { "name": "Jamal Murray" },
+                            { "name": "Juan Hernangomez" },
+                            { "name": "Tyler Lydon" },
+                            { "name": "Paul Millsap" },
+                            { "name": "Mason Plumlee" },
+                            { "name": "Gary Harris" },
+                            { "name": "Michael Porter Jr." },
+                            { "name": "Torrey Craig" },
+                            { "name": "Nikola Jokic" },
+                            { "name": "Will Barton" },
+                            { "name": "Jarred Vanderbilt" },
+                            { "name": "Isaiah Thomas" },
+                            { "name": "Thomas Welsh" },
+                            { "name": "Monte Morris" },
+                            { "name": "Brandon Goodwin" },
+                        ]
+                    },
+                    {
+                        "name": "DET", "children": [
+                            { "name": "Reggie Jackson" },
+                            { "name": "Jon Leuer" },
+                            { "name": "Ish Smith" },
+                            { "name": "Andre Drummond" },
+                            { "name": "Thon Maker" },
+                            { "name": "Luke Kennard" },
+                            { "name": "Langston Galloway" },
+                            { "name": "Blake Griffin" },
+                            { "name": "Bruce Brown" },
+                            { "name": "Glenn Robinson III" },
+                            { "name": "Jose Calderon" },
+                            { "name": "Sviatoslav Mykhailiuk" },
+                            { "name": "Zaza Pachulia" },
+                            { "name": "Khyri Thomas" },
+                            { "name": "Kalin Lucas" },
+                            { "name": "Isaiah Whitehead" },
+                            { "name": "Wayne Ellington" },
+                        ]
+                    },
+                    {
+                        "name": "GSW", "children": [
+                            { "name": "Klay Thompson" },
+                            { "name": "Draymond Green" },
+                            { "name": "Damian Jones" },
+                            { "name": "Jordan Bell" },
+                            { "name": "Stephen Curry" },
+                            { "name": "Andre Iguodala" },
+                            { "name": "Shaun Livingston" },
+                            { "name": "Quinn Cook" },
+                            { "name": "Jacob Evans" },
+                            { "name": "DeMarcus Cousins" },
+                            { "name": "Kevin Durant" },
+                            { "name": "Kevon Looney" },
+                            { "name": "Jonas Jerebko" },
+                            { "name": "Damion Lee" },
+                            { "name": "Marcus Derrickson" },
+                            { "name": "Alfonzo McKinnie" },
+                            { "name": "Andrew Bogut" },
+                        ]
+                    },
+                    {
+                        "name": "HOU", "children": [
+                            { "name": "James Harden" },
+                            { "name": "Iman Shumpert" },
+                            { "name": "Eric Gordon" },
+                            { "name": "Nene" },
+                            { "name": "P.J. Tucker" },
+                            { "name": "Chris Paul" },
+                            { "name": "Gerald Green" },
+                            { "name": "Isaiah Hartenstein" },
+                            { "name": "Clint Capela" },
+                            { "name": "Gary Clark" },
+                            { "name": "Vince Edwards" },
+                            { "name": "Danuel House" },
+                            { "name": "Austin Rivers" },
+                            { "name": "Kenneth Faried" },
+                            { "name": "Terrence Jones" },
+                        ]
+                    },
+                    {
+                        "name": "IND", "children": [
+                            { "name": "Victor Oladipo" },
+                            { "name": "Myles Turner" },
+                            { "name": "Thaddeus Young" },
+                            { "name": "Cory Joseph" },
+                            { "name": "Domantas Sabonis" },
+                            { "name": "T.J. Leaf" },
+                            { "name": "Bojan Bogdanovic" },
+                            { "name": "Darren Collison" },
+                            { "name": "Edmond Sumner" },
+                            { "name": "Aaron Holiday" },
+                            { "name": "Tyreke Evans" },
+                            { "name": "Doug McDermott" },
+                            { "name": "Kyle O'Quinn" },
+                            { "name": "Alize Johnson" },
+                            { "name": "Davon Reed" },
+                            { "name": "Wesley Matthews" },
+                        ]
+                    },
+                    {
+                        "name": "LAC", "children": [
+                            { "name": "Wilson Chandler" },
+                            { "name": "Patrick Beverley" },
+                            { "name": "Lou Williams" },
+                            { "name": "Ivica Zubac" },
+                            { "name": "Garrett Temple" },
+                            { "name": "Danilo Gallinari" },
+                            { "name": "Sindarius Thornwell" },
+                            { "name": "JaMychal Green" },
+                            { "name": "Johnathan Motley" },
+                            { "name": "Shai Gilgeous-Alexander" },
+                            { "name": "Landry Shamet" },
+                            { "name": "Jerome Robinson" },
+                            { "name": "Angel Delgado " },
+                            { "name": "Luc Mbah a Moute" },
+                            { "name": "Montrezl Harrell" },
+                            { "name": "Tyrone Wallace" },
+                        ]
+                    },
+                    {
+                        "name": "LAL", "children": [
+                            { "name": "Brandon Ingram" },
+                            { "name": "Lonzo Ball" },
+                            { "name": "Kyle Kuzma" },
+                            { "name": "Josh Hart" },
+                            { "name": "Reggie Bullock" },
+                            { "name": "Mike Muscala" },
+                            { "name": "Moritz Wagner" },
+                            { "name": "Isaac Bonga" },
+                            { "name": "Kentavious Caldwell-Pope" },
+                            { "name": "Rajon Rondo" },
+                            { "name": "LeBron James" },
+                            { "name": "Lance Stephenson" },
+                            { "name": "JaVale McGee" },
+                            { "name": "Alex Caruso" },
+                            { "name": "Johnathan Williams" },
+                            { "name": "Tyson Chandler" },
+                            { "name": "Andre Ingram" },
+                        ]
+                    },
+                    {
+                        "name": "MEM", "children": [
+                            { "name": "Jonas Valanciunas" },
+                            { "name": "Delon Wright" },
+                            { "name": "Chandler Parsons" },
+                            { "name": "Mike Conley" },
+                            { "name": "Justin Holiday" },
+                            { "name": "Tyler Dorsey" },
+                            { "name": "C.J. Miles" },
+                            { "name": "Dillon Brooks" },
+                            { "name": "Ivan Rabb" },
+                            { "name": "Jaren Jackson" },
+                            { "name": "Avery Bradley" },
+                            { "name": "Kyle Anderson" },
+                            { "name": "Jevon Carter" },
+                            { "name": "Yuta Watanabe" },
+                            { "name": "Joakim Noah" },
+                            { "name": "Julian Washburn" },
+                            { "name": "Bruno Caboclo" },
+                        ]
+                    },
+                    {
+                        "name": "MIA", "children": [
+                            { "name": "Justise Winslow" },
+                            { "name": "Goran Dragic" },
+                            { "name": "Ryan Anderson" },
+                            { "name": "Hassan Whiteside" },
+                            { "name": "Rodney McGruder" },
+                            { "name": "Bam Adebayo" },
+                            { "name": "James Johnson" },
+                            { "name": "Dion Waiters" },
+                            { "name": "Kelly Olynyk" },
+                            { "name": "Josh Richardson" },
+                            { "name": "Derrick Jones Jr." },
+                            { "name": "Duncan Robinson" },
+                            { "name": "Yante Maten" },
+                            { "name": "Udonis Haslem" },
+                            { "name": "Dwyane Wade" },
+                        ]
+                    },
+                    {
+                        "name": "MIL", "children": [
+                            { "name": "Eric Bledsoe" },
+                            { "name": "Giannis Antetokounmpo" },
+                            { "name": "Khris Middleton" },
+                            { "name": "Malcolm Brogdon" },
+                            { "name": "D.J. Wilson" },
+                            { "name": "George Hill" },
+                            { "name": "Sterling Brown" },
+                            { "name": "Tony Snell" },
+                            { "name": "Nikola Mirotic" },
+                            { "name": "Donte DiVincenzo" },
+                            { "name": "Ersan Ilyasova" },
+                            { "name": "Brook Lopez" },
+                            { "name": "Trevon Duval" },
+                            { "name": "Pat Connaughton" },
+                            { "name": "Christian Wood" },
+                            { "name": "Bonzie Colson" },
+                            { "name": "Pau Gasol" },
+                        ]
+                    },
+                    {
+                        "name": "MIN", "children": [
+                            { "name": "Gorgui Dieng" },
+                            { "name": "Andrew Wiggins" },
+                            { "name": "Robert Covington" },
+                            { "name": "Karl-Anthony Towns" },
+                            { "name": "Tyus Jones" },
+                            { "name": "Dario Saric" },
+                            { "name": "Jerryd Bayless" },
+                            { "name": "Jeff Teague" },
+                            { "name": "Taj Gibson" },
+                            { "name": "Josh Okogie" },
+                            { "name": "Derrick Rose" },
+                            { "name": "Jared Terrell" },
+                            { "name": "Keita Bates-Diop" },
+                            { "name": "Anthony Tolliver" },
+                            { "name": "C.J. Williams" },
+                            { "name": "Luol Deng" },
+                            { "name": "Cameron Reynolds" },
+                        ]
+                    },
+                    {
+                        "name": "NO", "children": [
+                            { "name": "Anthony Davis" },
+                            { "name": "Stanley Johnson" },
+                            { "name": "E'Twaun Moore" },
+                            { "name": "Cheick Diallo" },
+                            { "name": "Solomon Hill" },
+                            { "name": "Jrue Holiday" },
+                            { "name": "Frank Jackson" },
+                            { "name": "Darius Miller" },
+                            { "name": "Jason Smith" },
+                            { "name": "Elfrid Payton" },
+                            { "name": "Julius Randle" },
+                            { "name": "Ian Clark" },
+                            { "name": "Trevon Bluiett" },
+                            { "name": "Kenrich Williams" },
+                            { "name": "Jahlil Okafor" },
+                            { "name": "Dairis Bertans" },
+                        ]
+                    },
+                    {
+                        "name": "NYK", "children": [
+                            { "name": "Emmanuel Mudiay" },
+                            { "name": "Lance Thomas" },
+                            { "name": "Frank Ntilikina" },
+                            { "name": "Dennis Smith Jr." },
+                            { "name": "Damyean Dotson" },
+                            { "name": "Isaiah Hicks" },
+                            { "name": "Kevin Knox" },
+                            { "name": "Mario Hezonja" },
+                            { "name": "DeAndre Jordan" },
+                            { "name": "Luke Kornet" },
+                            { "name": "Mitchell Robinson" },
+                            { "name": "Allonzo Trier" },
+                            { "name": "Noah Vonleh" },
+                            { "name": "Kadeem Allen" },
+                            { "name": "John Jenkins" },
+                            { "name": "Henry Ellenson" },
+                        ]
+                    },
+                    {
+                        "name": "OKC", "children": [
+                            { "name": "Dennis Schroder" },
+                            { "name": "Russell Westbrook" },
+                            { "name": "Steven Adams" },
+                            { "name": "Patrick Patterson" },
+                            { "name": "Abdel Nader" },
+                            { "name": "Andre Roberson" },
+                            { "name": "Terrance Ferguson" },
+                            { "name": "Nerlens Noel" },
+                            { "name": "Paul George" },
+                            { "name": "Deonte Burton" },
+                            { "name": "Jerami Grant" },
+                            { "name": "Raymond Felton" },
+                            { "name": "Hamidou Diallo" },
+                            { "name": "Donte Grantham" },
+                            { "name": "Markieff Morris" },
+                        ]
+                    },
+                    {
+                        "name": "ORL", "children": [
+                            { "name": "Nikola Vucevic" },
+                            { "name": "Terrence Ross" },
+                            { "name": "Jerian Grant" },
+                            { "name": "Jarell Martin" },
+                            { "name": "Timofey Mozgov" },
+                            { "name": "D.J. Augustin" },
+                            { "name": "Evan Fournier" },
+                            { "name": "Jonathan Isaac" },
+                            { "name": "Markelle Fultz" },
+                            { "name": "Wesley Iwundu" },
+                            { "name": "Khem Birch" },
+                            { "name": "Mohamed Bamba" },
+                            { "name": "Isaiah Briscoe" },
+                            { "name": "Melvin Frazier" },
+                            { "name": "Aaron Gordon" },
+                            { "name": "Troy Caupain" },
+                            { "name": "Amile Jefferson" },
+                        ]
+                    },
+                    {
+                        "name": "PHI", "children": [
+                            { "name": "Jimmy Butler" },
+                            { "name": "Tobias Harris" },
+                            { "name": "Ben Simmons" },
+                            { "name": "Boban Marjanovic" },
+                            { "name": "T.J. McConnell" },
+                            { "name": "Furkan Korkmaz" },
+                            { "name": "Justin Patton" },
+                            { "name": "Jonathon Simmons" },
+                            { "name": "Joel Embiid" },
+                            { "name": "Zhaire Smith" },
+                            { "name": "J.J. Redick" },
+                            { "name": "Mike Scott" },
+                            { "name": "James Ennis" },
+                            { "name": "Amir Johnson" },
+                            { "name": "Jonah Bolden" },
+                            { "name": "Shake Milton" },
+                            { "name": "Haywood Highsmith" },
+                        ]
+                    },
+                    {
+                        "name": "PHX", "children": [
+                            { "name": "T.J. Warren" },
+                            { "name": "Devin Booker" },
+                            { "name": "Kelly Oubre Jr." },
+                            { "name": "Richaun Holmes" },
+                            { "name": "Tyler Johnson" },
+                            { "name": "Troy Daniels" },
+                            { "name": "Dragan Bender" },
+                            { "name": "Josh Jackson" },
+                            { "name": "Deandre Ayton" },
+                            { "name": "Mikal Bridges" },
+                            { "name": "George King" },
+                            { "name": "Elie Okobo" },
+                            { "name": "De'Anthony Melton" },
+                            { "name": "Jamal Crawford" },
+                            { "name": "Jawun Evans" },
+                            { "name": "Ray Spalding" },
+                        ]
+                    },
+                    {
+                        "name": "POR", "children": [
+                            { "name": "Damian Lillard" },
+                            { "name": "CJ McCollum" },
+                            { "name": "Al-Farouq Aminu" },
+                            { "name": "Evan Turner" },
+                            { "name": "Jake Layman" },
+                            { "name": "Meyers Leonard" },
+                            { "name": "Skal Labissiere" },
+                            { "name": "Maurice Harkless" },
+                            { "name": "Zach Collins" },
+                            { "name": "Anfernee Simons" },
+                            { "name": "Jusuf Nurkic" },
+                            { "name": "Gary Trent Jr." },
+                            { "name": "Seth Curry" },
+                            { "name": "Rodney Hood" },
+                            { "name": "Enes Kanter" },
+                        ]
+                    },
+                    {
+                        "name": "SAC", "children": [
+                            { "name": "Alec Burks" },
+                            { "name": "Willie Cauley-Stein" },
+                            { "name": "Kosta Koufos" },
+                            { "name": "Harrison Barnes" },
+                            { "name": "Buddy Hield" },
+                            { "name": "Caleb Swanigan" },
+                            { "name": "Harry Giles" },
+                            { "name": "De'Aaron Fox" },
+                            { "name": "Bogdan Bogdanovic" },
+                            { "name": "Frank Mason III" },
+                            { "name": "Marvin Bagley III" },
+                            { "name": "Nemanja Bjelica" },
+                            { "name": "Yogi Ferrell" },
+                            { "name": "Wenyen Gabriel" },
+                            { "name": "Troy Williams" },
+                            { "name": "Corey Brewer" },
+                        ]
+                    },
+                    {
+                        "name": "SAS", "children": [
+                            { "name": "LaMarcus Aldridge" },
+                            { "name": "Dejounte Murray" },
+                            { "name": "DeMar DeRozan" },
+                            { "name": "Jakob Poeltl" },
+                            { "name": "Derrick White" },
+                            { "name": "Patty Mills" },
+                            { "name": "Rudy Gay" },
+                            { "name": "Davis Bertans" },
+                            { "name": "Lonnie Walker" },
+                            { "name": "Dante Cunningham" },
+                            { "name": "Marco Belinelli" },
+                            { "name": "Bryn Forbes" },
+                            { "name": "Quincy Pondexter" },
+                            { "name": "Chimezie Metu" },
+                            { "name": "Drew Eubanks" },
+                            { "name": "Ben Moore" },
+                        ]
+                    },
+                    {
+                        "name": "TOR", "children": [
+                            { "name": "Marc Gasol" },
+                            { "name": "Kawhi Leonard" },
+                            { "name": "Danny Green" },
+                            { "name": "Pascal Siakam" },
+                            { "name": "OG Anunoby" },
+                            { "name": "Kyle Lowry" },
+                            { "name": "Serge Ibaka" },
+                            { "name": "Norman Powell" },
+                            { "name": "Fred VanVleet" },
+                            { "name": "Chris Boucher" },
+                            { "name": "Jordan Loyd" },
+                            { "name": "Patrick McCaw" },
+                            { "name": "Malcolm Miller" },
+                            { "name": "Jeremy Lin" },
+                        ]
+                    },
+                    {
+                        "name": "UTH", "children": [
+                            { "name": "Rudy Gobert" },
+                            { "name": "Ricky Rubio" },
+                            { "name": "Jae Crowder" },
+                            { "name": "Donovan Mitchell" },
+                            { "name": "Tony Bradley" },
+                            { "name": "Kyle Korver" },
+                            { "name": "Thabo Sefolosha" },
+                            { "name": "Royce O'Neale" },
+                            { "name": "Ekpe Udoh" },
+                            { "name": "Joe Ingles" },
+                            { "name": "Grayson Allen" },
+                            { "name": "Derrick Favors" },
+                            { "name": "Dante Exum" },
+                            { "name": "Raul Neto" },
+                            { "name": "Georges Niang" },
+                            { "name": "Naz Mitrou-Long" },
+                            { "name": "Tyler Cavanaugh" },
+                        ]
+                    },
+                    {
+                        "name": "WAS", "children": [
+                            { "name": "AJohn Wall1" },
+                            { "name": "Sam Dekker" },
+                            { "name": "Bobby Portis" },
+                            { "name": "Wesley Johnson" },
+                            { "name": "Ian Mahinmi" },
+                            { "name": "Tomas Satoransky" },
+                            { "name": "Bradley Beal" },
+                            { "name": "Devin Robinson" },
+                            { "name": "Troy Brown Jr." },
+                            { "name": "Trevor Ariza" },
+                            { "name": "Jeff Green" },
+                            { "name": "Dwight Howard" },
+                            { "name": "Jabari Parker" },
+                            { "name": "Thomas Bryant" },
+                            { "name": "Jordan McRae" },
+                            { "name": "Chasson Randle" },
+                        ]
+                    }
+                ]
+            };
+
+            
+
+            var diameter = 2200;
+
+            var margin = { top: 20, right: 120, bottom: 20, left: 120 },
+                width = diameter,
+                height = diameter;
+
+            var i = 0,
+                duration = 250,
+                root;
+            //DISTANCE BETWEEN CLUSTERS
+            var tree = d3.layout.tree()
+                .size([360, (diameter / 2 - 80)])
+                .separation(function (a, b) { return (a.parent == b.parent ? 1 : 3) / a.depth; });
+
+            var diagonal = d3.svg.diagonal.radial()
+                .projection(function (d) { return [d.y, d.x / 180 * Math.PI]; });
+
+            var svg = d3.select("body").append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+
+            root = pubs;
+            root.x0 = height / 2;
+            root.y0 = 0;
+
+            //root.children.forEach(collapse); // start with all children collapsed
+            update(root);
+
+            d3.select(self.frameElement).style("height", "800px");
+
+            function update(source) {
+
+                // Compute the new tree layout.
+                var nodes = tree.nodes(root),
+                    links = tree.links(nodes);
+
+                // Normalize for fixed-depth.
+                //LENGTH OF LINES
+                nodes.forEach(function (d) { d.y = d.depth * 430; });
+
+                // Update the nodes…
+                var node = svg.selectAll("g.node")
+                    .data(nodes, function (d) { return d.id || (d.id = ++i); });
+
+                // Enter any new nodes at the parent's previous position.
+                var nodeEnter = node.enter().append("g")
+                    .attr("class", "node")
+                    //.attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+                    .on("click", click);
+
+                nodeEnter.append("circle")
+                    .attr("r", 1e-6)
+                    .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+                nodeEnter.append("text")
+                    .attr("x", 10)
+                    .attr("dy", ".35em")
+                    .attr("text-anchor", "start")
+                    // .attr("transform", function(d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length * 8.5)  + ")"; })
+                    .text(function (d) { return d.name; })
+                    .style("fill-opacity", 1e-6);
+
+                // Transition nodes to their new position.
+                var nodeUpdate = node.transition()
+                    .duration(duration)
+                    .attr("transform", function (d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+
+                nodeUpdate.select("circle")
+                    .attr("r", 4.5)
+                    .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+                nodeUpdate.select("text")
+                    .style("fill-opacity", 1)
+                    //FLIP WHEN HALF WAY
+                    // .attr("transform", function (d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length + 50) + ")"; });
+
+                // TODO: appropriate transform
+                var nodeExit = node.exit().transition()
+                    .duration(duration)
+                    //.attr("transform", function(d) { return "diagonal(" + source.y + "," + source.x + ")"; })
+                    .remove();
+
+                nodeExit.select("circle")
+                    .attr("r", 1e-6);
+
+                nodeExit.select("text")
+                    .style("fill-opacity", 1e-6);
+
+                // Update the links…
+                var link = svg.selectAll("path.link")
+                    .data(links, function (d) { return d.target.id; });
+
+                // Enter any new links at the parent's previous position.
+                link.enter().insert("path", "g")
+                    .attr("class", "link")
+                    .attr("d", function (d) {
+                        var o = { x: source.x0, y: source.y0 };
+                        return diagonal({ source: o, target: o });
+                    });
+
+                // Transition links to their new position.
+                link.transition()
+                    .duration(duration)
+                    .attr("d", diagonal);
+
+                // Transition exiting nodes to the parent's new position.
+                link.exit().transition()
+                    .duration(duration)
+                    .attr("d", function (d) {
+                        var o = { x: source.x, y: source.y };
+                        return diagonal({ source: o, target: o });
+                    })
+                    .remove();
+
+                // Stash the old positions for transition.
+                nodes.forEach(function (d) {
+                    d.x0 = d.x;
+                    d.y0 = d.y;
+                });
+            }
+
+            // Toggle children on click.
+            function click(d) {
+                if (d.children) {
+                    d._children = d.children;
+                    d.children = null;
+                } else {
+                    d.children = d._children;
+                    d._children = null;
+                }
+
+                update(d);
+            }
+
+            // Collapse nodes
+            function collapse(d) {
+                if (d.children) {
+                    d._children = d.children;
+                    d._children.forEach(collapse);
+                    d.children = null;
+                }
+            }
+    </script>
+</body>
+
+</html>
