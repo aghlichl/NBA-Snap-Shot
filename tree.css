@@ -17,3 +17,27 @@
   stroke: rgb(214, 213, 213);
   stroke-width: 2.0px;
 }
+
+body { background: #000; }
+
+@keyframes pulse {
+    0%     { opacity: .1; }
+    20%    { opacity: .8; }
+    100%   { opacity: .1; }
+}
+
+svg path {
+  animation-duration: 1s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    color: #FFF;
+}
+
+.bb-7 { animation-delay: -1s }
+.bb-6 { animation-delay: -.875s }
+.bb-5 { animation-delay: -.75s }
+.bb-4 { animation-delay: -.625s }
+.bb-3 { animation-delay: -.5s }
+.bb-2 { animation-delay: -.375s }
+.bb-1 { animation-delay: -.25s }
+.bb-0 { animation-delay: -.125s }

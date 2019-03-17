@@ -5,24 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="tree.css">
+    <link rel="stylesheet/scss" type="text/css" href="application.scss">
     <title>NBA Snap SHOT</title>
-
+    
 </head>
 
 <body>
     
 
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.10/d3.min.js"></script>
-
     <script src="dist/bundle.js"></script>
-        <h1>NBA</h1>
+    <h4>NBA</h4>
+   <div id="splash"> 
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.10/d3.min.js"></script>
+<!-- 
+    <div id="bblogo">
+    <svg viewBox="0 0 2200 2200" xmlns="http://www.w3.org/500/svg">
+        <path class="bb-0"
+            d="M142.327 112.062C214.1 47.017 307.79 5.714 411 .55V410.5H280.346c-8.144-184.333-121.358-284.64-138.02-298.438z"
+            fill="currentColor" />
+        <path class="bb-1"
+            d="M111.104 143.388C46.716 214.908 5.822 307.995.574 410.5h235.893c-7.19-145.817-109.942-251.965-125.363-267.112z"
+            fill="currentColor" />
+        <path class="bb-2"
+            d="M110.902 722.388C46.422 650.666 5.552 557.292.524 454.5h235.788c-8.297 149.66-114.564 257.273-125.41 267.888z"
+            fill="currentColor" />
+        <path class="bb-3"
+            d="M141.633 753.308C213.497 818.716 307.458 860.268 411 865.45V454.5H280.354c-8.297 189.4-127.334 289.638-138.72 298.808z"
+            fill="currentColor" />
+        <path class="bb-4"
+            d="M723.222 754.346C651.507 819.156 557.992 860.296 455 865.45V454h129.39c7.743 190.638 127.705 291.398 138.832 300.346z"
+            fill="currentColor" />
+        <path class="bb-5"
+            d="M754.06 723.538C819.244 651.55 860.555 557.54 865.5 454H628.416c7.704 151.184 115.666 259.807 125.644 269.538z"
+            fill="currentColor" />
+        <path class="bb-6"
+            d="M754.82 143.302C819.145 214.716 860.042 307.652 865.4 410H628.418c8.043-149.258 115.93-256.613 126.4-266.698z"
+            fill="currentColor" />
+        <path class="bb-7"
+            d="M723.687 112.075C651.91 47.022 558.217 5.715 455 .55V410h129.53c8.944-188.743 128.016-288.947 139.157-297.925z"
+            fill="currentColor" />
+    </svg>
+    </div>
+    </div>
+    -->
 
-
+    
     <script>
-        var pubs =
+        let pubs =
             {
                 "name": "NBA",
+                "i": "testing 123 123 123",
                 "children": [
                     {
                         "name": "ATL", "children": [
@@ -637,29 +669,31 @@
 
             
 
-            var diameter = 2200;
+            let diameter = 1900;
 
-            var margin = { top: 20, right: 120, bottom: 20, left: 120 },
+            let margin = { top: 20, right: 120, bottom: 20, left: 120 },
                 width = diameter,
                 height = diameter;
 
-            var i = 0,
+            let i = 0,
                 duration = 250,
                 root;
             //DISTANCE BETWEEN CLUSTERS
-            var tree = d3.layout.tree()
+            let tree = d3.layout.tree()
                 .size([360, (diameter / 2 - 80)])
-                .separation(function (a, b) { return (a.parent == b.parent ? 1 : 3) / a.depth; });
+                .separation(function (a, b) { return (a.parent == b.parent ? 1.5 : 2.7) / a.depth; });
 
-            var diagonal = d3.svg.diagonal.radial()
+            let diagonal = d3.svg.diagonal.radial()
                 .projection(function (d) { return [d.y, d.x / 180 * Math.PI]; });
 
-            var svg = d3.select("body").append("svg")
+            let svg = d3.select("body").append("svg")
                 .attr("width", width)
                 .attr("height", height)
                 .append("g")
-                .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
-
+                .attr("transform", "translate(" + diameter / 2.5 + "," + diameter / 2.5 + ")")
+                // .on('mouseover', function(d, i){
+                //     tip.show(d,i);
+                // });
             root = pubs;
             root.x0 = height / 2;
             root.y0 = 0;
@@ -672,19 +706,28 @@
             function update(source) {
 
                 // Compute the new tree layout.
-                var nodes = tree.nodes(root),
+                let nodes = tree.nodes(root),
                     links = tree.links(nodes);
 
                 // Normalize for fixed-depth.
                 //LENGTH OF LINES
-                nodes.forEach(function (d) { d.y = d.depth * 430; });
+                nodes.forEach(function (d) { d.y = d.depth * 300; });
 
                 // Update the nodes…
-                var node = svg.selectAll("g.node")
-                    .data(nodes, function (d) { return d.id || (d.id = ++i); });
+                let node = svg.selectAll("g.node")
+                    .data(nodes, function (d) { return d.id || (d.id = ++i); })
+                    .on("click", function (d) {
+
+                        if(!d.children){
+                            // <div id="six" class="button">Sketch</div>
+                            console.log(d.name);
+                        }
+                    d3.event.stopPropagation();
+                });
+                    
 
                 // Enter any new nodes at the parent's previous position.
-                var nodeEnter = node.enter().append("g")
+                let nodeEnter = node.enter().append("g")
                     .attr("class", "node")
                     //.attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
                     .on("click", click);
@@ -694,7 +737,7 @@
                     .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
 
                 nodeEnter.append("text")
-                    .attr("x", 10)
+                    .attr("x", 30)
                     .attr("dy", ".35em")
                     .attr("text-anchor", "start")
                     // .attr("transform", function(d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length * 8.5)  + ")"; })
@@ -702,7 +745,7 @@
                     .style("fill-opacity", 1e-6);
 
                 // Transition nodes to their new position.
-                var nodeUpdate = node.transition()
+                let nodeUpdate = node.transition()
                     .duration(duration)
                     .attr("transform", function (d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
 
@@ -716,7 +759,7 @@
                     // .attr("transform", function (d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length + 50) + ")"; });
 
                 // TODO: appropriate transform
-                var nodeExit = node.exit().transition()
+                let nodeExit = node.exit().transition()
                     .duration(duration)
                     //.attr("transform", function(d) { return "diagonal(" + source.y + "," + source.x + ")"; })
                     .remove();
@@ -728,14 +771,14 @@
                     .style("fill-opacity", 1e-6);
 
                 // Update the links…
-                var link = svg.selectAll("path.link")
+                let link = svg.selectAll("path.link")
                     .data(links, function (d) { return d.target.id; });
 
                 // Enter any new links at the parent's previous position.
                 link.enter().insert("path", "g")
                     .attr("class", "link")
                     .attr("d", function (d) {
-                        var o = { x: source.x0, y: source.y0 };
+                        let o = { x: source.x0, y: source.y0 };
                         return diagonal({ source: o, target: o });
                     });
 
@@ -748,7 +791,7 @@
                 link.exit().transition()
                     .duration(duration)
                     .attr("d", function (d) {
-                        var o = { x: source.x, y: source.y };
+                        let o = { x: source.x, y: source.y };
                         return diagonal({ source: o, target: o });
                     })
                     .remove();
