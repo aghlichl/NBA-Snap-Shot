@@ -5,16 +5,13 @@ require 'json'
 class BasketballScraper
   PLAYERS = {
     durant: "d/duranke01",
-    lebron: "j/jamesle01",
-    kyrie: "i/irvinky01",
-    kawhi: "l/leonaka01",
-    harden: "h/hardeja01",
-    davis: "d/davisan02"
+    # lebron: "j/jamesle01",
+    # kyrie: "i/irvinky01",
+    # kawhi: "l/leonaka01",
+    # harden: "h/hardeja01",
+    # davis: "d/davisan02"
   }
 
-  TEAMS = {
-      
-  }
   def self.scrape!
     player_data = {}
     PLAYERS.each do |k, v|
@@ -24,8 +21,9 @@ class BasketballScraper
       stats = {}
       doc.at('#div_per_game').at('tbody').search('tr').each do |row|
         cells = row.search('th, td').map do |c|
-          stats["#{c['data-stat']}"] ||= []
-          stats["#{c['data-stat']}"] << c.text.strip
+          # stats["#{c['data-stat']}"] ||= []
+          # stats["#{c['data-stat']}"] << c.text
+          # stats["#{c['data-stat']}"] = stats["#{c['data-stat']}"].last
         end
       end
       player_data[k] = stats
@@ -34,9 +32,3 @@ class BasketballScraper
     File.open("player_data.json", 'w') { |file| file.write(json) }
   end
 end
-Collapse
-
-Message Input
-
-
-Message Vanessa Chen

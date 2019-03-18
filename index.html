@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet/scss" type="text/css" href="application.scss">
+    <link rel="stylesheet" type="text/css" href="application.css">
     <title>NBA Snap SHOT</title>
     
 </head>
@@ -17,6 +17,10 @@
     <h4>NBA</h4>
    <div id="splash"> 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.3.10/d3.min.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+
 <!-- 
     <div id="bblogo">
     <svg viewBox="0 0 2200 2200" xmlns="http://www.w3.org/500/svg">
@@ -58,105 +62,685 @@
                 "children": [
                     {
                         "name": "ATL", "children": [
-                            { "name": "Justin Anderson" },
-                            { "name": "Kent Bazemore" },
-                            { "name": "Taurean Prince" },
-                            { "name": "DeAndre' Bembry" },
-                            { "name": "Miles Plumlee" },
-                            { "name": "John Collins" },
-                            { "name": "Dewayne Dedmon" },
-                            { "name": "Trae Young" },
-                            { "name": "Kevin Huerter" },
-                            { "name": "Omari Spellman" },
-                            { "name": "Jaylen Adams" },
-                            { "name": "Alex Len" },
-                            { "name": "Alex Poythress" },
-                            { "name": "Vince Carter" },
-                            { "name": "B.J. Johnson" },
-                            { "name": "Tyler Zeller" },
+                            { "name": "Justin Anderson",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2982340.png&w=350&h=254'>",
+                                "points": 2.6,
+                                "rebounds": 1.3,
+                                "assists": 0.4,
+                                "FG": 37.5,
+                                "FG3": 17.8,
+                                "FT": 76.2 },
+                            { "name": "Kent Bazemore",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/6637.png&w=350&h=254' />",
+                                "FG": 41.7,
+                                "FG3": 31.5,
+                                "FT": 74.4,
+                                "rebounds": 4.0,
+                                "assists": 2.4,
+                                "points": 12.4 
+                            },
+                            { "name": "Taurean Prince",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2990962.png&w=350&h=254' />",
+                                "FG": 44.2,
+                                "FG3": 38.6,
+                                "FT": 83.2,
+                                "rebounds": 3.7,
+                                "assists": 2.1,
+                                "points": 13.3  
+                            },
+                            { "name": "DeAndre' Bembry",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3062667.png&w=350&h=254' />",
+                                "FG": 43.5,
+                                "FG3": 28.9,
+                                "FT": 60.6,
+                                "rebounds": 4.2,
+                                "assists": 2.5,
+                                "points": 8.0 
+                            },
+                            { "name": "Miles Plumlee",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/6616.png&w=350&h=254' />",
+                                "FG": 66.7,
+                                "FG3": "N/A",
+                                "FT": 53.3,
+                                "rebounds": 2.2,
+                                "assists": 0.9,
+                                "points": 4.4 
+                            },
+                            { "name": "John Collins",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3908845.png&w=350&h=254' />",
+                                "FG": 56.8,
+                                "FG3": 37.0,
+                                "FT": 76.5,
+                                "rebounds": 9.8,
+                                "assists": 2.0,
+                                "points": 19.9 
+                            },
+                            { "name": "Dewayne Dedmon",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2580913.png&w=350&h=254' />",
+                                "FG": 48.4,
+                                "FG3": 36.8,
+                                "FT": 81.6,
+                                "rebounds": 7.4,
+                                "assists": 1.4,
+                                "points": 10.6 
+                            },
+                            { "name": "Trae Young",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4277905.png&w=350&h=254' />",
+                                "FG": 41.4,
+                                "FG3": 33.9,
+                                "FT": 82.2,
+                                "rebounds": 3.5,
+                                "assists": 7.8,
+                                "points": 18.4 
+                            },
+                            { "name": "Kevin Huerter",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4066372.png&w=350&h=254' />",
+                                "FG": 42.1,
+                                "FG3": 39.0,
+                                "FT": 74.1,
+                                "rebounds": 3.3,
+                                "assists": 2.8,
+                                "points": 9.6 
+                            },
+                            { "name": "Omari Spellman",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4065836.png&w=350&h=254' />",
+                                "FG": 40.2,
+                                "FG3": 34.4,
+                                "FT": 71.1,
+                                "rebounds": 4.2,
+                                "assists": 1.0,
+                                "points": 5.9 
+                            },
+                            { "name": "Jaylen Adams",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3133874.png&w=350&h=254' />",
+                                "FG": 38.3,
+                                "FG3": 41.3,
+                                "FT": 1.00,
+                                "rebounds": 1.5,
+                                "assists": 1.7,
+                                "points": 3.0 
+                            },
+                            { "name": "Alex Len",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2596107.png&w=350&h=254' />",
+                                "FG": 48.8,
+                                "FG3": 33.8,
+                                "FT": 66.3,
+                                "rebounds": 5.6,
+                                "assists": 1.0,
+                                "points": 10.3 
+                            },
+                            { "name": "Alex Poythress",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2991283.png&w=350&h=254' />",
+                                "FG": 49.4,
+                                "FG3": 39.1,
+                                "FT": 62.1,
+                                "rebounds": 3.6,
+                                "assists": 0.8,
+                                "points": 5.1 
+                            },
+                            { "name": "Vince Carter",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/136.png&w=350&h=254' />",
+                                "FG": 43.5,
+                                "FG3": 40.5,
+                                "FT": 67.3,
+                                "rebounds": 2.5,
+                                "assists": 1.1,
+                                "points": 7.2 
+                            },
+                            { "name": "B.J. Johnson",
+                                "img": "<img id='cover-img' src='https://usathoopshype.files.wordpress.com/2019/02/i_43_7e_b5_bj-johnson.png?w=190&h=190&crop=1' />",
+                                "FG": 46.7,
+                                "FG3": 50.0,
+                                "FT": 100.0,
+                                "rebounds": 1.6,
+                                "assists": 0.0,
+                                "points": 3.8 
+                            },
+                            { "name": "Tyler Zeller",
+                                "img": "<img id='cover-img' src='http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/6631.png&w=350&h=254' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 
+                            },
                         ]
                     },
                     {
                         "name": "BOS", "children": [
-                            { "name": "Kyrie Irving" },
-                            { "name": "Marcus Morris" },
-                            { "name": "Terry Rozier" },
-                            { "name": "Al Horford" },
-                            { "name": "Jaylen Brown" },
-                            { "name": "Jayson Tatum" },
-                            { "name": "Gordon Hayward" },
-                            { "name": "Semi Ojeleye" },
-                            { "name": "Guerschon Yabusele" },
-                            { "name": "Daniel Theis" },
-                            { "name": "Brad Wanamaker" },
-                            { "name": "Robert Williams" },
-                            { "name": "Aron Baynes" },
-                            { "name": "Marcus Smart" },
-                            { "name": "PJ Dozier" },
-                            { "name": "R.J. Hunter" },
+                            { "name": "Kyrie Irving",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 49.5,
+                                "FG3": 41.1,
+                                "FT": 86.7,
+                                "rebounds": 5.1,
+                                "assists": 7.1,
+                                "points": 23.6
+                            },
+                            { "name": "Marcus Morris",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 46.1,
+                                "FG3": 37.9,
+                                "FT": 83.2,
+                                "rebounds": 6.1,
+                                "assists": 1.4,
+                                "points": 14.3
+                            },
+                            { "name": "Terry Rozier",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "Al Horford",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "Jaylen Brown",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "Jayson Tatum",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "Gordon Hayward",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "Semi Ojeleye",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "Guerschon Yabusele",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "Daniel Theis",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "Brad Wanamaker",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "Robert Williams",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "Aron Baynes",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "Marcus Smart",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "PJ Dozier",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
+                            { "name": "R.J. Hunter",
+                                "img": "<img id='cover-img' src='' />",
+                                "FG": 0.0,
+                                "FG3": 0.0,
+                                "FT": 0.0,
+                                "rebounds": 3.0,
+                                "assists": 0.5,
+                                "points": 0.0 },
                         ]
                     },
                     {
                         "name": "BKN", "children": [
-                            { "name": "D'Angelo Russell" },
-                            { "name": "Rondae Hollis-Jefferson" },
-                            { "name": "DeMarre Carroll" },
-                            { "name": "Allen Crabbe" },
-                            { "name": "Caris LeVert" },
-                            { "name": "Jared Dudley" },
-                            { "name": "Spencer Dinwiddie" },
-                            { "name": "Jarrett Allen" },
-                            { "name": "Dzanan Musa" },
-                            { "name": "Rodions Kurucs" },
-                            { "name": "Shabazz Napier" },
-                            { "name": "Ed Davis" },
-                            { "name": "Joe Harris" },
-                            { "name": "Treveon Graham" },
-                            { "name": "Theo Pinson" },
-                            { "name": "Alan Williams" },
-                            { "name": "Alan Williams" },
-                            { "name": "Alan Williams" },
+                            { "name": "D'Angelo Russell",
+                                "FG": ".429",
+                                "FG3": ".362",
+                                "FT": ".806",
+                                "rebounds": "3.7",
+                                "assists": "6.7",
+                                "points": "20.2"  },
+                            { "name": "Joe Harris",
+                                "FG": ".499",
+                                "FG3": ".462",
+                                "FT": ".833",
+                                "rebounds": "3.6",
+                                "assists": "2.5",
+                                "points": "13.4"  },
+                            { "name": "Spencer Dinwiddie",
+                                "FG": ".460",
+                                "FG3": ".364",
+                                "FT": ".793",
+                                "rebounds": "2.5",
+                                "assists": "4.9",
+                                "points": "17.6"
+                            },
+                            { "name": "Caris LeVert",
+                                "FG": ".423",
+                                "FG3": ".296",
+                                "FT": ".718",
+                                "rebounds": "4.0",
+                                "assists": "3.7",
+                                "points": "13.8"
+                              },
+                            { "name": "Jarrett Allen", 
+                              "FG": ".590",
+                                "FG3": ".140",
+                                "FT": ".713",
+                                "rebounds": "8.4",
+                                "assists": "1.4",
+                                "points": "11.1"
+                             },
+                            { "name": "Allen Crabbe",
+                            "FG": ".367",
+                                "FG3": ".378",
+                                "FT": ".732",
+                                "rebounds": "3.4",
+                                "assists": "1.1",
+                                "points": "9.6"
+                             },
+                            { "name": "DeMarre Carroll", 
+                            "FG": ".392",
+                                "FG3": ".349",
+                                "FT": ".750",
+                                "rebounds": "5.3",
+                                "assists": "1.3",
+                                "points": "10.9"
+                             },
+                            { "name": "Treveon Graham",
+                                "FG": ".331",
+                                "FG3": ".267",
+                                "FT": ".778",
+                                "rebounds": "3.0",
+                                "assists": "0.9",
+                                "points": "5.3"
+                            },
+                            { "name": "Rondae Hollis-Jefferson",
+                                 "FG": ".406",
+                                "FG3": ".191",
+                                "FT": ".649",
+                                "rebounds": "5.0",
+                                "assists": "1.6",
+                                "points": "8.7"
+                                },
+                            { "name": "Rodions Kurucs", 
+                             "FG": ".478",
+                                "FG3": ".343",
+                                "FT": ".844",
+                                "rebounds": "3.8",
+                                "assists": "0.8",
+                                "points": "9.0"
+                             },
+                            { "name": "Jared Dudley", 
+                             "FG": ".407",
+                                "FG3": ".331",
+                                "FT": ".629",
+                                "rebounds": "2.5",
+                                "assists": "1.4",
+                                "points": "4.5"
+                             },
+                            { "name": "Ed Davis", 
+                            "FG": ".605",
+                                "FG3": ".000",
+                                "FT": ".596",
+                                "rebounds": "8.6",
+                                "assists": "0.8",
+                                "points": "5.7"
+                             },
+                            { "name": "Shabazz Napier", 
+                            "FG": ".389",
+                                "FG3": ".329",
+                                "FT": ".833",
+                                "rebounds": "1.7",
+                                "assists": "2.5",
+                                "points": "9.4"
+                             },
+                            { "name": "Dzanan Musa", 
+                            "FG": ".349",
+                                "FG3": ".282",
+                                "FT": ".864",
+                                "rebounds": "2.1",
+                                "assists": "1.3",
+                                "points": "4.9"
+                             },
+                            { "name": "Theo Pinson", 
+                             "FG": ".600",
+                                "FG3": ".000",
+                                "FT": ".500",
+                                "rebounds": "4.3",
+                                "assists": "0.8",
+                                "points": "3.5"
+                             },
+                            { "name": "Alan Williams", 
+                            "FG": ".400",
+                                "FG3": ".000",
+                                "FT": ".000",
+                                "rebounds": "0.5",
+                                "assists": "0.1",
+                                "points": "2.0"
+                             },
                         ]
                     },
                     {
                         "name": "CHA", "children": [
-                        { "name": "Michael Kidd-Gilchrist" },
-                        { "name": "Kemba Walker" },
-                        { "name": "Cody Zeller" },
-                        { "name": "Jeremy Lamb" },
-                        { "name": "Frank Kaminsky" },
-                        { "name": "Nicolas Batum" },
-                        { "name": "Bismack Biyombo" },
-                        { "name": "Marvin Williams" },
-                        { "name": "Willy Hernangomez" },
-                        { "name": "Malik Monk" },
-                        { "name": "Dwayne Bacon" },
-                        { "name": "Miles Bridges" },
-                        { "name": "J.P. Macura" },
-                        { "name": "Devonte' Graham" },
-                        { "name": "Tony Parker" },
-                        { "name": "Shelvin Mack" },
-                        { "name": "Joe Chealey" },
+                        { "name": "Kemba Walker", 
+                            "FG": ".430",
+                                "FG3": ".359",
+                                "FT": ".834",
+                                "rebounds": "4.3",
+                                "assists": "5.8",
+                                "points": "25.2"
+                         },
+                        { "name": "Nicolas Batum", 
+                        "FG": ".458",
+                            "FG3": ".399",
+                            "FT": ".855",
+                            "rebounds": "5.3",
+                            "assists": "3.5",
+                            "points": "10.0"
+                         },
+                        { "name": "Marvin Williams", 
+                         "FG": ".424",
+                            "FG3": ".377",
+                            "FT": ".744",
+                            "rebounds": "5.7",
+                            "assists": "1.3",
+                            "points": "10.4"
+                         },
+                        { "name": "Jeremy Lamb", 
+                        "FG": ".442",
+                            "FG3": ".338",
+                            "FT": ".880",
+                            "rebounds": "5.6",
+                            "assists": "2.2",
+                            "points": "15.1"
+                         },
+                        { "name": "Cody Zeller", 
+                         "FG": ".551",
+                            "FG3": ".273",
+                            "FT": ".787",
+                            "rebounds": "6.8",
+                            "assists": "2.1",
+                            "points": "10.1"
+                         },
+                        { "name": "Miles Bridges", 
+                         "FG": ".448",
+                            "FG3": ".313",
+                            "FT": ".746",
+                            "rebounds": "3.7",
+                            "assists": "0.9",
+                            "points": "6.7"
+                         },
+                        { "name": "Michael Kidd-Gilchrist", 
+                        "FG": ".481",
+                            "FG3": ".275",
+                            "FT": ".773",
+                            "rebounds": "4.0",
+                            "assists": "0.9",
+                            "points": "7.1"
+                         },
+                        { "name": "Tony Parker", 
+                        "FG": ".456",
+                            "FG3": ".245",
+                            "FT": ".730",
+                            "rebounds": "1.5",
+                            "assists": "3.8",
+                            "points": "9.4"
+                         },
+                        { "name": "Malik Monk", 
+                         "FG": ".386",
+                            "FG3": ".325",
+                            "FT": ".894",
+                            "rebounds": "1.7",
+                            "assists": "1.7",
+                            "points": "9.6"
+                         },
+                        { "name": "Bismack Biyombo", 
+                         "FG": ".579",
+                            "FG3": "",
+                            "FT": ".681",
+                            "rebounds": "4.5",
+                            "assists": "0.5",
+                            "points": "4.3"
+                         },
+                        { "name": "J.P. Macura", 
+                        "FG": ".250",
+                            "FG3": ".000",
+                            "FT": "",
+                            "rebounds": "2.0",
+                            "assists": "2.0",
+                            "points": "4.0"
+                         },
+                        { "name": "Willy Hernangomez", 
+                        "FG": ".521",
+                            "FG3": ".433",
+                            "FT": ".679",
+                            "rebounds": "5.4",
+                            "assists": "1.0",
+                            "points": "7.1"
+                         },
+                        { "name": "Devonte' Graham", 
+                        "FG": ".366",
+                            "FG3": ".313",
+                            "FT": ".739",
+                            "rebounds": "1.2",
+                            "assists": "2.2",
+                            "points": "4.5"
+                         },
+                        { "name": "Frank Kaminsky", 
+                         "FG": ".485",
+                            "FG3": ".390",
+                            "FT": ".692",
+                            "rebounds": "2.9",
+                            "assists": "1.1",
+                            "points": "7.0"
+                         },
+                        { "name": "Dwayne Bacon", 
+                        "FG": ".513",
+                            "FG3": ".472",
+                            "FT": ".833",
+                            "rebounds": "1.6",
+                            "assists": "0.8",
+                            "points": "5.2"
+                         },
+                        { "name": "Shelvin Mack", 
+                         "FG": ".143",
+                            "FG3": "",
+                            "FT": ".571",
+                            "rebounds": "1.0",
+                            "assists": "0.5",
+                            "points": "3.0"
+                         },
+                        { "name": "Joe Chealey", 
+                         "FG": ".333",
+                            "FG3": "",
+                            "FT": "",
+                            "rebounds": "0.0",
+                            "assists": "1.0",
+                            "points": "2.0"
+                         },
                     ]
                     },
                     {
                         "name": "CHI", "children": [
-                            { "name": "Robin Lopez" },
-                            { "name": "Timothe Luwawu-Cabarrot" },
-                            { "name": "Denzel Valentine" },
-                            { "name": "Kris Dunn" },
-                            { "name": "Lauri Markkanen" },
-                            { "name": "Cristiano Felicio" },
-                            { "name": "Otto Porter" },
-                            { "name": "Wayne Selden" },
-                            { "name": "Chandler Hutchison" },
-                            { "name": "Wendell Carter Jr." },
-                            { "name": "Zach LaVine" },
-                            { "name": "Antonio Blakeney" },
-                            { "name": "Ryan Arcidiacono" },
-                            { "name": "Rawle Alkins" },
-                            { "name": "Shaquille Harrison" },
-                            { "name": "Brandon Sampson" },
+                            { "name": "Robin Lopez",
+                            "FG": ".569",
+                                "FG3": ".261",
+                                "FT": ".729",
+                                "rebounds": "3.7",
+                                "assists": "1.1",
+                                "points": "8.9"
+                             },
+                            { "name": "Timothe Luwawu-Cabarrot",
+                            "FG": ".324",
+                                "FG3": ".308",
+                                "FT": ".692",
+                                "rebounds": "2.1",
+                                "assists": "0.5",
+                                "points": "3.9"
+                             },
+                            { "name": "Denzel Valentine",
+                            "FG": ".417",
+                                "FG3": ".386",
+                                "FT": ".745",
+                                "rebounds": "5.1",
+                                "assists": "3.2",
+                                "points": "10.2"
+                             },
+                            { "name": "Kris Dunn",
+                             "FG": ".430",
+                                "FG3": ".357",
+                                "FT": ".797",
+                                "rebounds": "4.2",
+                                "assists": "6.0",
+                                "points": "11.1"
+                             },
+                            { "name": "Zach LaVine",
+                            "FG": ".468",
+                                "FG3": ".369",
+                                "FT": ".831",
+                                "rebounds": "4.6",
+                                "assists": "4.5",
+                                "points": "23.9"
+                             },
+                            { "name": "Otto Porter",
+                             "FG": ".490",
+                                "FG3": ".500",
+                                "FT": ".903",
+                                "rebounds": "5.8",
+                                "assists": "2.8",
+                                "points": "18.1"
+                             },
+                            { "name": "Lauri Markkanen",
+                            "FG": ".431",
+                                "FG3": ".362",
+                                "FT": ".864",
+                                "rebounds": "9.1",
+                                "assists": "1.4",
+                                "points": "18.9"
+                             },
+                            { "name": "Wendell Carter Jr.",
+                            "FG": ".485",
+                                "FG3": ".188",
+                                "FT": ".795",
+                                "rebounds": "7.0",
+                                "assists": "1.8",
+                                "points": "10.3"
+                             },
+                            { "name": "Ryan Arcidiacono",
+                             "FG": ".444",
+                                "FG3": ".370",
+                                "FT": ".880",
+                                "rebounds": "2.5",
+                                "assists": "3.4",
+                                "points": "6.1"
+                             },
+                            { "name": "Wayne Selden",
+                            "FG": ".429",
+                                "FG3": ".360",
+                                "FT": ".766",
+                                "rebounds": "2.6",
+                                "assists": "1.7",
+                                "points": "7.7"
+                             },
+                            { "name": "Chandler Hutchison",
+                            "FG": ".459",
+                                "FG3": ".280",
+                                "FT": ".605",
+                                "rebounds": "4.2",
+                                "assists": "0.8",
+                                "points": "5.2"
+                             },
+                            { "name": "Shaquille Harrison",
+                            "FG": ".416",
+                                "FG3": ".250",
+                                "FT": ".650",
+                                "rebounds": "2.5",
+                                "assists": "1.8",
+                                "points": "5.4"
+                             },
+                            { "name": "Antonio Blakeney",
+                            "FG": ".433",
+                                "FG3": ".453",
+                                "FT": ".688",
+                                "rebounds": "1.6",
+                                "assists": "0.5",
+                                "points": "7.3"
+                             },
+                            { "name": "Cristiano Felicio",
+                            "FG": ".534",
+                                "FG3": ".000",
+                                "FT": ".688",
+                                "rebounds": "2.9",
+                                "assists": "0.5",
+                                "points": "3.3"
+                             },
+                            { "name": "Brandon Sampson",
+                            "FG": ".625",
+                                "FG3": ".400",
+                                "FT": "",
+                                "rebounds": "0.8",
+                                "assists": "0.2",
+                                "points": "2.4"
+                             },
+                            { "name": "Rawle Alkins",
+                            "FG": ".250",
+                                "FG3": "1.000",
+                                "FT": "",
+                                "rebounds": "1.0",
+                                "assists": "0.7",
+                                "points": "1.0"
+                             },
                         ]
                     },
                     {
@@ -248,7 +832,15 @@
                             { "name": "Draymond Green" },
                             { "name": "Damian Jones" },
                             { "name": "Jordan Bell" },
-                            { "name": "Stephen Curry" },
+                            { "name": "Stephen Curry",
+                              "img": "<img id='cover-img' src='https://pngimage.net/wp-content/uploads/2018/06/stephen-curry-shooting-png-7.png'>",
+                              "points": 27.9,
+                              "rebounds": 5.3,
+                              "assists": 5.2,
+                              "FG": 47.3,
+                              "FG3": 42.9,
+                              "FT": 91.4
+                            },
                             { "name": "Andre Iguodala" },
                             { "name": "Shaun Livingston" },
                             { "name": "Quinn Cook" },
@@ -698,6 +1290,20 @@
             root.x0 = height / 2;
             root.y0 = 0;
 
+            var tip = d3.tip()
+                    // .append('svg:image')
+                    .attr('class', 'd3-tip')
+                    .offset([-50, -100])
+                    .html(function (d) {
+                        console.log(d);
+                        return(
+                        "<div id='profile'> <center><h2>" + d.name + "</h2></center>" + d.img + "<div id='stats'>" + "<div id='stats-left'>" + "<div>" + "PTS - " + d.points + "</div>" + "<div>" + "RB - " + d.rebounds + "</div>" + "<div>" + "AST - " + d.assists + "</div>" + "</div>" 
+                        + "<div id='stats-right'>" + "<div>" + "FG% - "+ d.FG + "</div>" + "<div>" + "FG3% - "+ d.FG3 + "</div>" + "<div>" + "FT% - "+ d.FT + "</div>" + "</div>" );
+                    })
+
+
+                    svg.call(tip);
+
             //root.children.forEach(collapse); // start with all children collapsed
             update(root);
 
@@ -716,14 +1322,51 @@
                 // Update the nodes…
                 let node = svg.selectAll("g.node")
                     .data(nodes, function (d) { return d.id || (d.id = ++i); })
-                    .on("click", function (d) {
+                    .on("mouseover", tip.show)
+                    .on("mouseout", tip.hide);
+                //     .on("click", function (d) {
 
-                        if(!d.children){
-                            // <div id="six" class="button">Sketch</div>
-                            console.log(d.name);
-                        }
-                    d3.event.stopPropagation();
-                });
+                //         if(!d.children){
+                //             // <div id="six" class="button">Sketch</div>
+                //             console.log(d.name);
+                //         }
+                //     d3.event.stopPropagation();
+                // });
+
+            
+
+                 function handleMouseOver(d, i) {  // Add interactivity
+
+                    // Use D3 to select element, change color and size
+                    d3.select(this).attr({
+                        fill: "red",
+                        // r: 20
+                    });
+
+                    // Specify where to put label of text
+                    // svg.append("text").attr({
+                    //     // id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
+                    //     // x: function () { return xScale(d.x) - 30; },
+                    //     // y: function () { return yScale(d.y) - 15; }
+                    //     // id: 'aaa',
+                    //     // x: 'bbb',
+                    //     // y: 'ccc'
+                    // })
+                    //     .text(function () {
+                    //         return [d.x, d.y];  // Value of the text
+                    //     });
+                }
+
+                function handleMouseOut(d, i) {
+                    // Use D3 to select element, change color back to normal
+                    d3.select(this).attr({
+                        fill: "black",
+                        // r: 20
+                    });
+
+                    // Select text by id and then remove
+                    // d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
+                }
                     
 
                 // Enter any new nodes at the parent's previous position.
@@ -824,6 +1467,8 @@
                     d.children = null;
                 }
             }
+
+            
     </script>
 </body>
 

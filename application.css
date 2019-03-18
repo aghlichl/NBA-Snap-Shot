@@ -1,0 +1,159 @@
+.node {
+  cursor: pointer;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(119, 57, 57, 0.356);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: rgb(207, 161, 74);
+  stroke-width: 2.5px;
+}
+
+ #bblogo{
+   position: relative;
+   margin-bottom: -160vh;
+   padding-left: 35vw;
+   padding-top: 56vh;
+ }
+
+.node text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font: 12px sans-serif;
+}
+
+ .link {
+   fill: none;
+   stroke: rgb(214, 213, 213);
+   stroke-width: 2.0px;
+ }
+
+ #cover-img{
+   max-width: 150px;
+   max-height: 150px;
+   margin: 0 auto;
+ }
+
+ #profile{
+   display: flex; 
+   flex-direction: column;
+ }
+
+ #stats{
+   display: flex;
+   flex-direction: row; 
+   min-height: 100px;
+   justify-content: space-between;
+ }
+
+ #stats-left div{
+   margin: 14px 7px;
+ }
+ #stats-right div{
+   margin: 14px 7px;
+ }
+
+ #stats-left{
+   display: flex;
+   flex-direction: column; 
+ }
+ #stats-right{
+   display: flex;
+   flex-direction: column; 
+ }
+
+ center h2{
+   color: gold;
+ }
+
+
+
+/* html{ */
+  /* background: black;  */
+/* } */
+
+ /* #splash{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start
+} 
+
+@keyframes pulse {
+    0%     { opacity: .1; }
+    20%    { opacity: .8; }
+    100%   { opacity: .1; }
+}
+
+svg path {
+  animation-duration: 1s;
+    animation-name: pulse;
+    animation-iteration-count: infinite;
+    color: #B54213;
+}
+
+
+
+svg:not(:root){
+       position: relative;
+    /* top: -0vh; */
+    /* left: -5vw; */
+/* } */
+
+/* .bb-7 { animation-delay: -1s }
+.bb-6 { animation-delay: -.875s }
+.bb-5 { animation-delay: -.75s }
+.bb-4 { animation-delay: -.625s }
+.bb-3 { animation-delay: -.5s }
+.bb-2 { animation-delay: -.375s }
+.bb-1 { animation-delay: -.25s }
+.bb-0 { animation-delay: -.125s } */ 
+
+html, body {  
+  margin: 0;
+  padding: 0;
+  background-color: rgb(88, 60, 60);
+}
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+}
+
+.node text {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: rgb(146, 146, 146);
+  stroke-width: 1px;
+}
+
+
