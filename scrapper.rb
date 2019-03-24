@@ -31,4 +31,5 @@ class BasketballScraper
     json = JSON.pretty_generate(player_data)
     File.open("player_data.json", 'w') { |file| file.write(json) }
   end
+
 end
