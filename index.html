@@ -4398,6 +4398,8 @@
                 ]
             };
 
+
+
             
 
             let diameter = 3000;
@@ -4737,17 +4739,14 @@
                    )
                     .attr("r", function(d){ 
                        if(d.depth === 1){
-                          return 30;
+                          return 20;
                           }
-                        else if(d.depth === 0){
-                           return 100;
-                        }
                        else{
                           return 3.5;
                           }
                         }
                      )
-                    .style("fill", function (d) { console.log(d)});
+                    .style("fill", function (d) { return d._children ? "rgb(207, 161, 74)" : "#fff"; });
 
                 nodeUpdate.select("text")
                     .style("fill-opacity", 1)

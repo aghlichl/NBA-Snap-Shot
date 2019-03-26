@@ -34,6 +34,8 @@
 }
 
 .node circle {
+
+  /* background-image: url('https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/wsh.png&h=80&w=80&scale=crop'); */
   fill: #fff;
   stroke: rgb(207, 161, 74);
   stroke-width: 2.5px;
