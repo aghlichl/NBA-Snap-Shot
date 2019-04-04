@@ -3,9 +3,7 @@
 }
 
 .d3-tip {
-  position: fixed;
-  top: 10px;
-  left: 500px;
+  position: relative;
   line-height: 1;
   font-weight: bold;
   padding: 12px;

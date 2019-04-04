@@ -4463,7 +4463,21 @@
 
                 // Normalize for fixed-depth.
                 //LENGTH OF LINES
-                nodes.forEach(function (d) { d.y = d.depth * 300; });
+                nodes.forEach(function (d) { 
+                   if(d.name === "NBA"){
+                      d.y = d.depth * 10;
+                   }
+                   else if(d.parent.name === "NBA"){
+                      d.y = d.depth * 200;
+                      console.log(d)
+                   }
+                   else{
+
+                   d.y = d.depth * 300; 
+                   }
+                   
+                   
+                   });
 
                 // Update the nodes…
                 let node = svg.selectAll("g.node")
@@ -4536,7 +4550,12 @@
                       imgs.enter()
                   .append("svg:image")
                   
-                  nodeEnter.append("image")
+                  nodeEnter.append("svg:image")
+                  .attr('x',-9)
+                  .attr('y',-12)
+                  .attr('width', 20)
+                  .attr('height', 24)
+                  .attr('transform', 'rotate(180 0 0)')
                      .attr("xlink:href", function (d) {
                         if (d.name === "NBA") {
                            return "https://castrstatic-5doxhowepfdd9.stackpathdns.com/portal.sportscastr.com/v1/media/logos/Circle/NBA_Logo.png"
@@ -4641,109 +4660,16 @@
                     .attr("transform", function (d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
 
                 nodeUpdate.select("circle")
-                    .attr("xlink:href", function (d) {
-                      if (d.name === "NBA") {
-                         return "https://castrstatic-5doxhowepfdd9.stackpathdns.com/portal.sportscastr.com/v1/media/logos/Circle/NBA_Logo.png"
-                      }
-                      else if (d.name === "ATL") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/atl.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "BOS") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/bos.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "BKN") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/bkn.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "CHA") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/cha.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "CHI") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/chi.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "CLE") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/cle.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "DAL") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/dal.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "DEN") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/den.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "DET") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/det.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "GSW") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/gs.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "HOU") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/hou.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "IND") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/ind.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "LAC") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/lac.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "LAL") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/lal.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "MEM") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/mem.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "MIA") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/mia.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "MIL") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/mil.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "MIN") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/min.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "NO") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/no.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "NYK") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/ny.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "OKC") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/okc.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "ORL") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/orl.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "PHI") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/phi.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "PHX") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/phx.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "POR") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/por.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "SAC") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/sac.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "SAS") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/sa.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "TOR") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/tor.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "UTH") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/utah.png&h=80&w=80&scale=crop"
-                      }
-                      else if (d.name === "WAS") {
-                         return "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/wsh.png&h=80&w=80&scale=crop"
-                      }
-                   }
-                   )
                     .attr("r", function(d){ 
                        if(d.depth === 1){
-                          return 20;
+                          return 17;
                           }
-                       else{
-                          return 3.5;
+                       else if(d.depth === 0){
+                          return 33;
                           }
+                        else{
+                           return 3.5;
+                        }
                         }
                      )
                     .style("fill", function (d) { return d._children ? "rgb(207, 161, 74)" : "#fff"; });
