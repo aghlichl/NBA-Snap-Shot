@@ -4401,7 +4401,12 @@
             };
 
 
-
+            Array.prototype.getUnique = function () {
+                  var o = {}, a = [], i, e;
+                  for (i = 0; e = this[i]; i++) { o[e] = 1 };
+                  for (e in o) { a.push(e) };
+                  return a;
+               }
             
 
             let diameter = 3000;
@@ -4437,9 +4442,9 @@
             var tip = d3.tip()
                     // .append('svg:image')
                     .attr('class', 'd3-tip')
-                    tip.offset(function (d) {
-                        return [0,0]
-                     })
+                  //   tip.offset(function (d) {
+                  //       return [0,0]
+                  //    })
                     .html(function (d) {
                        if (d.name.length > 3){
                         return(
@@ -4461,19 +4466,28 @@
                 // Compute the new tree layout.
                 let nodes = tree.nodes(root),
                     links = tree.links(nodes);
-
-                // Normalize for fixed-depth.
-                //LENGTH OF LINES
+                let initial = new Set();
+                let maxQueue = []
                 nodes.forEach(function (d) { 
+                   if (d.name.length <= 3){
+                     initial.add(d);
+                     if(initial.size === 31){
+                     
+                     }
+                     
+                   }
+                   if(maxQueue.size > 100){
+
+                   }
                    if(d.name === "NBA"){
                       d.y = d.depth * 10;
                    }
                    else if(d.parent.name === "NBA"){
-                      d.y = d.depth * 400;
+                      d.y = d.depth * 300;
                    }
                    else{
 
-                   d.y = d.depth * 300; 
+                   d.y = d.depth * 250; 
                    }
                    
                    
@@ -4482,7 +4496,16 @@
                 // Update the nodes…
                 let node = svg.selectAll("g.node")
                     .data(nodes, function (d) { return d.id || (d.id = ++i); })
-                    .on("mouseover", tip.show)
+                    .on("mouseover", function(d){
+                       if(d.name.length > 4){
+                          tip.show;
+                       }
+                       else{
+                       tip.hide;
+
+                       }
+                    }
+                    )
                     .on("mouseout", tip.hide);
                 //     .on("click", function (d) {
 
@@ -4783,7 +4806,7 @@
                 nodeUpdate.select("text")
                     .style("fill-opacity", 1)
                     //FLIP WHEN HALF WAY
-                    .attr("transform", function (d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length + 418) + ")"; });
+                    .attr("transform", function (d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length + 258) + ")"; });
 
                 // TODO: appropriate transform
                 let nodeExit = node.exit().transition()
@@ -4830,14 +4853,29 @@
                 });
             }
 
-            // Toggle children on click.
+               let counter = [];
             function click(d) {
+               counter.getUnique();
+               console.log(counter)
+
                 if (d.children) {
+                   if(d.name.length < 4){
+                    counter.filter(word =>{
+
+                    })
                     d._children = d.children;
                     d.children = null;
+
+                   }
                 } else {
+                    if (d.name.length < 4) {
+                   counter.push(d)
                     d.children = d._children;
                     d._children = null;
+                   if(counter.length > 7){
+                      collapse(counter.shift());
+                   }
+                   }
                 }
 
                 update(d);
