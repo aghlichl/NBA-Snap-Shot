@@ -2,17 +2,20 @@
   cursor: pointer;
 }
 
+
+/*look here*/
 .d3-tip {
   position: relative;
   line-height: 1;
   font-weight: bold;
   padding: 12px;
-  background: rgba(119, 57, 57, 0.356);
+  background: rgba(163, 28, 28, 0.356);
   color: #fff;
   border-radius: 2px;
 }
 
 /* Creates a small triangle extender for the tooltip */
+/*look here*/
 .d3-tip:after {
   box-sizing: border-box;
   display: inline;
@@ -97,6 +100,7 @@
    flex-direction: column; 
  }
 
+ /*look here*/
  center h2{
      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
    font-size: 35px;
@@ -145,10 +149,12 @@ svg:not(:root){
 .bb-1 { animation-delay: -.25s }
 .bb-0 { animation-delay: -.125s } */ 
 
+
+/*look here*/
 html, body {  
   margin: 0;
   padding: 0;
-  background-color: rgb(212, 192, 192);
+  background-color: rgb(255, 208, 0);
 }
 .node {
   cursor: pointer;

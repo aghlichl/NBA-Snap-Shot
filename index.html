@@ -4543,7 +4543,7 @@
                     .attr("dy", ".35em")
                     .attr("text-anchor", "start")
                     // .attr("transform", function(d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length * 8.5)  + ")"; })
-                    .text(function (d) { return d.name ; })
+                    .text(function (d) { if(d.depth === 2)return d.name ; })
                     .style("fill-opacity", 1e-6)
                     
                   var imgs = svg.selectAll("image").data([0]);
@@ -4551,11 +4551,13 @@
                   .append("svg:image")
                   
                   nodeEnter.append("svg:image")
-                  .attr('x',-9)
-                  .attr('y',-12)
-                  .attr('width', 20)
-                  .attr('height', 24)
-                  .attr('transform', 'rotate(180 0 0)')
+                  .attr('x',-40)
+                  .attr('y',-40)
+                  .attr('width', 80)
+                  .attr('height', 80)
+                  .attr('transform', function(d){
+                     console.log(d);
+                  })
                      .attr("xlink:href", function (d) {
                         if (d.name === "NBA") {
                            return "https://castrstatic-5doxhowepfdd9.stackpathdns.com/portal.sportscastr.com/v1/media/logos/Circle/NBA_Logo.png"
@@ -4662,10 +4664,10 @@
                 nodeUpdate.select("circle")
                     .attr("r", function(d){ 
                        if(d.depth === 1){
-                          return 17;
+                          return 40;
                           }
                        else if(d.depth === 0){
-                          return 33;
+                          return 80;
                           }
                         else{
                            return 3.5;
