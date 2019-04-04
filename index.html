@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="application.css">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
     <title>NBA Snap SHOT</title>
+
     
 </head>
 
@@ -4436,7 +4438,6 @@
                     // .append('svg:image')
                     .attr('class', 'd3-tip')
                     tip.offset(function (d) {
-                     //   console.log(d3.event.pageX, d3.event.pageY)
                         return [0,0]
                      })
                     .html(function (d) {
@@ -4450,7 +4451,7 @@
 
                     svg.call(tip);
 
-            //root.children.forEach(collapse); // start with all children collapsed
+            root.children.forEach(collapse); // start with all children collapsed
             update(root);
 
             d3.select(self.frameElement).style("height", "800px");
@@ -4468,8 +4469,7 @@
                       d.y = d.depth * 10;
                    }
                    else if(d.parent.name === "NBA"){
-                      d.y = d.depth * 200;
-                      console.log(d)
+                      d.y = d.depth * 400;
                    }
                    else{
 
@@ -4496,25 +4496,7 @@
             
 
                  function handleMouseOver(d, i) {  // Add interactivity
-
-                    // Use D3 to select element, change color and size
-                    d3.select(this).attr({
-                        fill: "red",
-                        // r: 20
-                    });
-
-                    // Specify where to put label of text
-                    // svg.append("text").attr({
-                    //     // id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
-                    //     // x: function () { return xScale(d.x) - 30; },
-                    //     // y: function () { return yScale(d.y) - 15; }
-                    //     // id: 'aaa',
-                    //     // x: 'bbb',
-                    //     // y: 'ccc'
-                    // })
-                    //     .text(function () {
-                    //         return [d.x, d.y];  // Value of the text
-                    //     });
+                 
                 }
 
                 function handleMouseOut(d, i) {
@@ -4551,12 +4533,134 @@
                   .append("svg:image")
                   
                   nodeEnter.append("svg:image")
-                  .attr('x',-40)
-                  .attr('y',-40)
-                  .attr('width', 80)
-                  .attr('height', 80)
+                  .attr('x',function(d){
+                     if(d.name==="NBA"){
+                        return -80
+                     }
+                     else{
+                        return -40;
+                     }
+                     }
+                  )
+                  .attr('y',function(d){
+                     if(d.name==="NBA"){
+                        return -80
+                     }
+                     else{
+                        return -40;
+                     }
+                     })
+                  .attr('width',function(d){
+                     if(d.name==="NBA"){
+                        return  160
+                     }
+                     else{
+                        return 80;
+                     }
+                     })
+                  .attr('height',function(d){
+                     if(d.name==="NBA"){
+                        return  160
+                     }
+                     else{
+                        return 80;
+                     }
+                  }
+                  )
                   .attr('transform', function(d){
-                     console.log(d);
+                     if (d.name === "NBA") {
+                        return "rotate(-90 0 0)"
+                     }
+                     else if (d.name === "ATL") {
+                        return "rotate(83 0 0)"
+                     }
+                     else if (d.name === "BOS") {
+                        return "rotate(71 0 0)"
+                     }
+                     else if (d.name === "BKN") {
+                        return "rotate(59 0 0)"
+                     }
+                     else if (d.name === "CHA") {
+                        return "rotate(47 0 0)"
+                     }
+                     else if (d.name === "CHI") {
+                        return "rotate(35 0 0)"
+                     }
+                     else if (d.name === "CLE") {
+                        return "rotate(23 0 0)"
+                     }
+                     else if (d.name === "DAL") {
+                        return "rotate(11 0 0)"
+                     }
+                     else if (d.name === "DEN") {
+                        return "rotate(-1 0 0)"
+                     }
+                     else if (d.name === "DET") {
+                        return "rotate(-13 0 0)"
+                     }
+                     else if (d.name === "GSW") {
+                        return "rotate(-25 0 0)"
+                     }
+                     else if (d.name === "HOU") {
+                        return "rotate(-37 0 0)"
+                     }
+                     else if (d.name === "IND") {
+                        return "rotate(-49 0 0)"
+                     }
+                     else if (d.name === "LAC") {
+                        return "rotate(-61 0 0)"
+                     }
+                     else if (d.name === "LAL") {
+                        return "rotate(-73 0 0)"
+                     }
+                     else if (d.name === "MEM") {
+                        return "rotate(-85 0 0)"
+                     }
+                     else if (d.name === "MIA") {
+                        return "rotate(-97 0 0)"
+                     }
+                     else if (d.name === "MIL") {
+                        return "rotate(-109 0 0)"
+                     }
+                     else if (d.name === "MIN") {
+                        return "rotate(-121 0 0)"
+                     }
+                     else if (d.name === "NO") {
+                        return "rotate(-133 0 0)"
+                     }
+                     else if (d.name === "NYK") {
+                        return "rotate(-145 0 0)"
+                     }
+                     else if (d.name === "OKC") {
+                        return "rotate(-157 0 0)"
+                     }
+                     else if (d.name === "ORL") {
+                        return "rotate(-169 0 0)"
+                     }
+                     else if (d.name === "PHI") {
+                        return "rotate(-181 0 0)"
+                     }
+                     else if (d.name === "PHX") {
+                        return "rotate(-193 0 0)"
+                     }
+                     else if (d.name === "POR") {
+                        return "rotate(-205 0 0)"
+                     }
+                     else if (d.name === "SAC") {
+                        return "rotate(-217 0 0)"
+                     }
+                     else if (d.name === "SAS") {
+                        return "rotate(-229 0 0)"
+                     }
+                     else if (d.name === "TOR") {
+                        return "rotate(-241 0 0)"
+                     }
+                     else if (d.name === "UTH") {
+                        return "rotate(-253 0 0)"
+                     }
+                     else if (d.name === "WAS") {
+                        return "rotate(-265 0 0)"
+                     }
                   })
                      .attr("xlink:href", function (d) {
                         if (d.name === "NBA") {
@@ -4674,12 +4778,12 @@
                         }
                         }
                      )
-                    .style("fill", function (d) { return d._children ? "rgb(207, 161, 74)" : "#fff"; });
+                    .style("fill", function (d) { return d._children ? "rgba(167, 167, 167, 0.294)" : "rgba(67, 57, 167, 0.694)"; });
 
                 nodeUpdate.select("text")
                     .style("fill-opacity", 1)
                     //FLIP WHEN HALF WAY
-                    .attr("transform", function (d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length + 118) + ")"; });
+                    .attr("transform", function (d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length + 418) + ")"; });
 
                 // TODO: appropriate transform
                 let nodeExit = node.exit().transition()
