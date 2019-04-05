@@ -191,7 +191,8 @@ svg:not(:root){
 html, body {  
   margin: 0;
   padding: 0;
-  background-image: url('../teams/nba8.jpg');
+  background-position: left -38vw bottom -21vh;
+  background-image: url('../teams/nba.gif');
 }
 .node {
   cursor: pointer;
