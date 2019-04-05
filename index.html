@@ -4440,16 +4440,18 @@
             
 
             var tip = d3.tip()
-                    // .append('svg:image')
                     .attr('class', 'd3-tip')
-                  //   tip.offset(function (d) {
-                  //       return [0,0]
-                  //    })
+                    tip.offset(function (d) {
+                       console.log('x', d.x);
+                       console.log('y', d.y);
+                     //   return [0,0]
+                        return [-d.x, -d.x];
+                     })
                     .html(function (d) {
                        if (d.name.length > 3){
                         return(
-                        "<div id='profile'> <center><h2>" + d.name + "</h2></center>" + d.img + "<div id='stats'>" + "<div id='stats-left'>" + "<div>" + "PTS - " + d.points + "</div>" + "<div>" + "RB - " + d.rebounds + "</div>" + "<div>" + "AST - " + d.assists + "</div>" + "</div>" 
-                        + "<div id='stats-right'>" + "<div>" + "FG% - "+ d.FG + "</div>" + "<div>" + "FG3% - "+ d.FG3 + "</div>" + "<div>" + "FT% - "+ d.FT + "</div>" + "</div>" );
+                        "<div id='positioner'><div id='profile'> <center><h2>" + d.name + "</h2></center>" + d.img + "<div id='stats'>" + "<div id='stats-left'>" + "<div>" + "PTS - " + d.points + "</div>" + "<div>" + "RB - " + d.rebounds + "</div>" + "<div>" + "AST - " + d.assists + "</div>" + "</div>" 
+                        + "<div id='stats-right'>" + "<div>" + "FG% - "+ d.FG + "</div>" + "<div>" + "FG3% - "+ d.FG3 + "</div>" + "<div>" + "FT% - "+ d.FT + "</div>" + "</div>" + "</div>");
                        }
                     })
 
@@ -4496,16 +4498,7 @@
                 // Update the nodes…
                 let node = svg.selectAll("g.node")
                     .data(nodes, function (d) { return d.id || (d.id = ++i); })
-                    .on("mouseover", function(d){
-                       if(d.name.length > 4){
-                          tip.show;
-                       }
-                       else{
-                       tip.hide;
-
-                       }
-                    }
-                    )
+                    .on("mouseover", tip.show)
                     .on("mouseout", tip.hide);
                 //     .on("click", function (d) {
 
@@ -4853,6 +4846,8 @@
                 });
             }
 
+
+
                let counter = [];
             function click(d) {
                counter.getUnique();
@@ -4872,7 +4867,7 @@
                    counter.push(d)
                     d.children = d._children;
                     d._children = null;
-                   if(counter.length > 7){
+                   if(counter.length > 6){
                       collapse(counter.shift());
                    }
                    }
