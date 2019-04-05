@@ -9,13 +9,15 @@
   line-height: 1;
   font-weight: bold;
   padding: 15px 20px;
-  background: linear-gradient(-225deg, #43234d 0%,
-   #130f1a 29%, #8a3e3e 67%,
-    #622569 100%),
+  background: linear-gradient(-225deg,
+  #26daad2d 0%,
+  #001510 25%,
+    #360033 60%,
+  #0b8893b9 100%),
      repeating-linear-gradient(-115deg, transparent, transparent 20px, rgba(255,255,255,0.1) 20px, rgba(255,255,255,0.1) 40px),
       repeating-linear-gradient(115deg, transparent, transparent 20px, rgba(255,255,255,0.1) 20px, rgba(255,255,255,0.1) 40px);
   color: #fff;
-  border-radius: 5%;
+  border-radius: 3%;
 }
 
 
@@ -87,11 +89,11 @@
  }
 
  #cover-img{
-   padding-bottom: 20px;
-   min-width: 175px;
-   min-height: 127px;
-   max-width: 175px;
-   max-height: 127px;
+   padding-bottom: 5px;
+   min-width: 190.9px;
+   min-height: 138.55px;
+   max-width: 190.9px;
+   max-height: 138.55px;
    margin: 0 auto;
  }
 
@@ -108,35 +110,41 @@
  }
 
  #stats{
+   color: #F3E0BE;
+   border: 5px double rgba(243, 224, 190, 0.342);
    font-family: 'Maven Pro', sans-serif;
    font-size: 20px;
    display: flex;
    flex-direction: row; 
    min-height: 100px;
-   justify-content: space-between;
+   justify-content: space-around;
+   
  }
 
  #stats-left div{
+   border-bottom: 1px double rgba(243, 224, 190, 0.555);
    margin: 14px 7px;
  }
  #stats-right div{
+   border-bottom: 2px double rgba(243, 224, 190, 0.548);
    margin: 14px 7px;
  }
 
  #stats-left{
    display: flex;
    flex-direction: column; 
- }
- #stats-right{
+  }
+  #stats-right{
    display: flex;
    flex-direction: column; 
  }
 
  /*look here*/
  center h2{
+   font-weight: 1000;
    font-family: 'Maven Pro', sans-serif;
-   font-size: 40px;
-   color: rgb(255, 217, 0);
+   font-size: 35px;
+   color: #F3E0BE;
  }
  center h4{
    font-family: 'Maven Pro', sans-serif;
