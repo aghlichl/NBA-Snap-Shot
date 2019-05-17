@@ -55,4 +55,4 @@ Originally I planned to have all the player names shown at the start, however I 
 ```
 
 ## Future Direction
-* Search functionality for the players
+* Search functionality for the players, more advanced analytics
