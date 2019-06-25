@@ -4883,6 +4883,35 @@
             ]
          };
 
+         let allStars = [
+               "LeBron James",
+               "Giannis Antetokounmpo",
+               "Kevin Durant",
+               "Stephen Curry",
+               "Kyrie Irving",
+               "Joel Embiid",
+               "Kawhi Leonard",
+               "Paul George",
+               "James Harden",
+               "Kemba Walker",
+               "Khris Middleton",
+               "Anthony Davis",
+               "Nikola Jokic",
+               "Klay Thompson",
+               "Ben Simmons",
+               "Damian Lillard",
+               "Blake Griffin",
+               "Russell Westbrook",
+               "D'Angelo Russell",
+               "LaMarcus Aldridge",
+               "Nikola Vucevic",
+               "Karl-Anthony Towns",
+               "Kyle Lowry",
+               "Bradley Beal",
+               "Dwyane Wade",
+               "Dirk Nowitzki",
+            ]
+
 
             
 
@@ -4937,9 +4966,19 @@
          })
             .html(function (d) {
                if (d.name.length > 3) {
-                  return (
-                     "<div id='positioner'><div id='profile'> <center><h2>" + d.name + "</h2></center>" + d.img + "<div id='stats'>" + "<div id='stats-left'>" + "<div>" + "PTS - " + d.points + "</div>" + "<div>" + "RB - " + d.rebounds + "</div>" + "<div>" + "AST - " + d.assists + "</div>" + "</div>"
-                     + "<div id='stats-right'>" + "<div>" + "FG% - " + d.FG + "</div>" + "<div>" + "FG3% - " + d.FG3 + "</div>" + "<div>" + "FT% - " + d.FT + "</div>" + "</div>" + "</div>");
+                  console.log(allStars)
+                  if(allStars.includes(d.name)){
+                     return (
+                        "<div id='positioner-all-star'><div id='profile-all-star'> <center><h2 id='all-star-name'>" + d.name + "</h2></center>" + d.img + "<div id='stats-all-star'>" + "<div id='stats-left-all-star'>" + "<div>" + "PTS - " + d.points + "</div>" + "<div>" + "RB - " + d.rebounds + "</div>" + "<div>" + "AST - " + d.assists + "</div>" + "</div>"
+                        + "<div id='stats-right-all-star'>" + "<div>" + "FG% - " + d.FG + "</div>" + "<div>" + "FG3% - " + d.FG3 + "</div>" + "<div>" + "FT% - " + d.FT + "</div>" + "</div>" + "</div>");
+                     
+                  }
+                  else{
+                     return (
+                        "<div id='positioner'><div id='profile'> <center><h2>" + d.name + "</h2></center>" + d.img + "<div id='stats'>" + "<div id='stats-left'>" + "<div>" + "PTS - " + d.points + "</div>" + "<div>" + "RB - " + d.rebounds + "</div>" + "<div>" + "AST - " + d.assists + "</div>" + "</div>"
+                        + "<div id='stats-right'>" + "<div>" + "FG% - " + d.FG + "</div>" + "<div>" + "FG3% - " + d.FG3 + "</div>" + "<div>" + "FT% - " + d.FT + "</div>" + "</div>" + "</div>");
+
+                  }  
                }
             })
 
@@ -5011,34 +5050,7 @@
 
             nodeEnter.append("circle")
             
-            let allStars = [ 
-               "LeBron James",
-               "Giannis Antetokounmpo",
-               "Kevin Durant", 
-               "Stephen Curry",	
-               "Kyrie Irving",	
-               "Joel Embiid",	
-               "Kawhi Leonard",	
-               "Paul George",	
-               "James Harden",	
-               "Kemba Walker",	
-               "Khris Middleton",	
-               "Anthony Davis",	
-               "Nikola Jokic",	
-               "Klay Thompson",	
-               "Ben Simmons",  
-               "Damian Lillard",	
-               "Blake Griffin",	
-               "Russell Westbrook",  
-               "D'Angelo Russell",	
-               "LaMarcus Aldridge",	
-               "Nikola Vucevic",	
-               "Karl-Anthony Towns",	
-               "Kyle Lowry",	
-               "Bradley Beal",	
-               "Dwyane Wade",	
-               "Dirk Nowitzki",	
-            ]
+            
 
             nodeEnter.append("text")
             .attr("x", 30)

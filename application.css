@@ -3,9 +3,10 @@
 }
 
 #positioner{
+  transform: scale(0.85);
   position: fixed;
-  top: 3vh;
-  right: 1vw;
+  top: 0vh;
+  right: 0vw;
   line-height: 1;
   font-weight: bold;
   padding: 15px 20px;
@@ -17,6 +18,19 @@
      repeating-linear-gradient(-115deg, transparent, transparent 20px, rgba(255,255,255,0.1) 20px, rgba(255,255,255,0.1) 40px),
       repeating-linear-gradient(115deg, transparent, transparent 20px, rgba(255,255,255,0.1) 20px, rgba(255,255,255,0.1) 40px);
   color: #fff;
+  border-radius: 3%;
+}
+#positioner-all-star{
+  transform: scale(0.85);
+  position: fixed;
+  top: 0vh;
+  right: 0vw;
+  line-height: 1;
+  font-weight: bold;
+  padding: 15px 20px;
+  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+  radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+  color: black;
   border-radius: 3%;
 }
 
@@ -55,14 +69,6 @@
   text-align: center; */
 }
 
-html, body, {
-    position:fixed;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-}
-
 .d3-tip.n:after {
 
   /* margin: -1px 0 0 0;
@@ -90,6 +96,8 @@ html, body, {
    stroke: rgb(214, 213, 213);
    stroke-width: 2.0px;
  }
+
+ /* non-allstars */
 
  #cover-img{
    padding-bottom: 5px;
@@ -149,6 +157,64 @@ html, body, {
    font-family: 'Maven Pro', sans-serif;
    font-size: 20px;
    color: whitesmoke;
+ }
+
+ /* all-stars */
+ #cover-img-all-star{
+   padding-bottom: 5px;
+   max-width: 190.9px;
+   max-height: 138.55px;
+   margin: 0 auto;
+ }
+
+ #profile-all-star{
+   max-width: 300px;
+   max-height: 400px;
+   min-width: 300px;
+   min-height: 400px;
+   display: flex; 
+   flex-direction: column;
+     white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+ }
+
+ #stats-all-star{
+   color: #F3E0BE;
+   border: 5px double #5A3E36;
+   font-family: 'Maven Pro', sans-serif;
+   font-size: 20px;
+   display: flex;
+   flex-direction: row; 
+   min-height: 100px;
+   justify-content: space-around;
+   
+ }
+
+ #stats-left-all-star div{
+   color: #5A3E36;
+   margin: 14px 7px;
+ }
+ #stats-right-all-star div{
+   color: #5A3E36;
+   margin: 14px 7px;
+ }
+
+ #stats-left-all-star{
+   display: flex;
+   flex-direction: column; 
+  }
+  #stats-right-all-star{
+   display: flex;
+   flex-direction: column; 
+ }
+
+ /*look here*/
+ #all-star-name{
+   font-weight: 1000;
+   font-family: 'Maven Pro', sans-serif;
+   font-size: 30px;
+   color: #5A3E36;
  }
 
 
