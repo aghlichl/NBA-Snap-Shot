@@ -6,13 +6,31 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="stylesheet" type="text/css" href="application.css">
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
    <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
    <title>NBA Snap SHOT</title>
 
 
 </head>
 
 <body>
+   <div class="rainbow-text">
+      <div class="title-text">
+         <span class="letters">N</span>
+         <span class="letters">B</span>
+         <span class="letters">A </span>
+         <a href="https://github.com/aghlichl/NBA-Snap-Shot" target="_blank">
+            <span class="letters"></span><i id="icon-size" class="fab fa-github fa-4x letters"></i></span>
+         </a>
+
+         <span class="letters"></span>
+         <span class="letters">S</span>
+         <span class="letters">N</span>
+         <span class="letters">A</span>
+         <span class="letters">P</span>
+      </div>
+   </div>
 
    <div id='stars'></div>
    <div id='stars2'></div>
@@ -69,7 +87,11 @@
             .then(json => {
                let diameter = window.innerWidth;
                let width = window.innerWidth;
-               let height = window.innerHeight * 1.2;
+               let heightRatio = (946/window.innerHeight);
+               let height = window.innerHeight * heightRatio;
+               if(window.innerHeight >=  946){
+                  height = window.innerHeight
+               }
 
                // let margin = { top: 220, right: 120, bottom: 220, left: 120 };
                // width = width,
@@ -84,7 +106,6 @@
                ///
 
                //
-               console.log(json)
                let twentyNineTeen = json;
 
 
@@ -109,315 +130,315 @@
                root.x0 = 0;
                root.y0 = 0;
 
-           
-         var tip = d3.tip()
-            .attr('class', 'd3-tip')
-         tip.offset(function (d) {
-            //   console.log('x', d.x);
-            //   console.log('y', d.y);
-            //   return [0,0]
-            return [-d.x, -d.x];
-         })
-            .html(function (d) {
-               if (d.name.length > 3) {
-                  console.log(allStars)
-                  if (allStars.includes(d.name)) {
-                     return (
-                        "<div id='positioner-all-star'><div id='profile-all-star'> <center><h2 id='all-star-name'>" + d.name + "</h2></center>" + d.img + "<div id='stats-all-star'>" + "<div id='stats-left-all-star'>" + "<div>" + "PTS - " + d.points + "</div>" + "<div>" + "RB - " + d.rebounds + "</div>" + "<div>" + "AST - " + d.assists + "</div>" + "</div>"
-                        + "<div id='stats-right-all-star'>" + "<div>" + "FG% - " + d.FG + "</div>" + "<div>" + "FG3% - " + d.FG3 + "</div>" + "<div>" + "FT% - " + d.FT + "</div>" + "</div>" + "</div>");
 
+               var tip = d3.tip()
+                  .attr('class', 'd3-tip')
+               tip.offset(function (d) {
+                  //   console.log('x', d.x);
+                  //   console.log('y', d.y);
+                  //   return [0,0]
+                  return [-d.x, -d.x];
+               })
+                  .html(function (d) {
+                     if (d.name.length > 3) {
+                        if (allStars.includes(d.name)) {
+                           return (
+                              "<div id='positioner-all-star'><div id='profile-all-star'> <center><h2 id='all-star-name'>" + d.name + "</h2></center>" + d.img + "<div id='stats-all-star'>" + "<div id='stats-left-all-star'>" + "<div>" + "PTS - " + d.points + "</div>" + "<div>" + "RB - " + d.rebounds + "</div>" + "<div>" + "AST - " + d.assists + "</div>" + "</div>"
+                              + "<div id='stats-right-all-star'>" + "<div>" + "FG% - " + d.FG + "</div>" + "<div>" + "FG3% - " + d.FG3 + "</div>" + "<div>" + "FT% - " + d.FT + "</div>" + "</div>" + "</div>");
+
+                        }
+                        else {
+                           return (
+                              "<div id='positioner'><div id='profile'> <center><h2>" + d.name + "</h2></center>" + d.img + "<div id='stats'>" + "<div id='stats-left'>" + "<div>" + "PTS - " + d.points + "</div>" + "<div>" + "RB - " + d.rebounds + "</div>" + "<div>" + "AST - " + d.assists + "</div>" + "</div>"
+                              + "<div id='stats-right'>" + "<div>" + "FG% - " + d.FG + "</div>" + "<div>" + "FG3% - " + d.FG3 + "</div>" + "<div>" + "FT% - " + d.FT + "</div>" + "</div>" + "</div>");
+
+                        }
+                     }
+                  })
+
+
+               svg.call(tip);
+
+               root.children.forEach(collapse); // start with all children collapsed
+               update(root);
+
+
+               d3.select(self.frameElement).style("height", "800px");
+
+
+               function update(source) {
+
+                  // Compute the new tree layout.
+                  let nodes = tree.nodes(root),
+                     links = tree.links(nodes);
+                  let initial = new Set();
+                  let maxQueue = [];
+
+                  nodes.forEach(function (d) {
+                     if (d.name.length <= 3 && d.name !== "NBA") {
+                        initial.add(d);
+                     }
+                     if (d.name === "NBA") {
+                        d.y = d.depth * 1;
+                     }
+                     else if (d.parent.name === "NBA") {
+                        d.y = d.depth * 175;
+                     }
+                     else {
+
+                        d.y = d.depth * 125;
+                     }
+
+
+                  });
+
+                  // Update the nodes…
+                  let node = svg.selectAll("g.node")
+                     .data(nodes, function (d) { return d.id || (d.id = ++i); })
+                     .on("mouseover", tip.show)
+                     .on("mouseout", tip.hide)
+
+
+
+
+                  function handleMouseOver(d, i) {  // Add interactivity
+                     // console.log(d)
                   }
-                  else {
-                     return (
-                        "<div id='positioner'><div id='profile'> <center><h2>" + d.name + "</h2></center>" + d.img + "<div id='stats'>" + "<div id='stats-left'>" + "<div>" + "PTS - " + d.points + "</div>" + "<div>" + "RB - " + d.rebounds + "</div>" + "<div>" + "AST - " + d.assists + "</div>" + "</div>"
-                        + "<div id='stats-right'>" + "<div>" + "FG% - " + d.FG + "</div>" + "<div>" + "FG3% - " + d.FG3 + "</div>" + "<div>" + "FT% - " + d.FT + "</div>" + "</div>" + "</div>");
 
+                  function handleMouseOut(d, i) {
+                     // Use D3 to select element, change color back to normal
+                     d3.select(this).attr({
+                        fill: "black",
+                        // r: 20
+                     });
+
+                     // Select text by id and then remove
+                     // d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
+                  }
+
+
+                  // Enter any new nodes at the parent's previous position.
+                  let nodeEnter = node.enter().append("g")
+                     .attr("class", "node")
+                     //.attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+                     .on("click", click);
+
+                  nodeEnter.append("circle")
+
+
+
+                  nodeEnter.append("text")
+                     .attr("x", 30)
+                     .attr("dy", ".35em")
+                     .attr("text-anchor", "start")
+                     .attr("transform", function (d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length * 8.5) + ")"; })
+                     .text(function (d) {
+                        if (d.depth === 2) {
+                           let allstarName = "✭" + d.name + "✭"
+                           return allStars.includes(d.name) ? allstarName : d.name;
+                        };
+                     })
+                     .attr('class', function (d) {
+                        if (allStars.includes(d.name)) {
+                           return "all-star"
+                        }
+                        else {
+                           return 'non-all-star'
+                        }
+                     }
+                     )
+                     .style("fill-opacity", 1e-6)
+
+                  var imgs = svg.selectAll("image").data([0]);
+                  imgs.enter()
+                     .append("svg:image")
+
+                  //Image Attributes
+                  nodeEnter.append("svg:image")
+                     .attr('x', function (d) {
+                        if (d.name === "NBA") {
+                           return -50
+                        }
+                        else {
+                           return -25;
+                        }
+                     }
+                     )
+                     .attr('y', function (d) {
+                        if (d.name === "NBA") {
+                           return -50
+                        }
+                        else {
+                           return -25;
+                        }
+                     })
+                     .attr('width', function (d) {
+                        if (d.name === "NBA") {
+                           return 100
+                        }
+                        else {
+                           return 50;
+                        }
+                     })
+                     .attr('height', function (d) {
+                        if (d.name === "NBA") {
+                           return 100
+                        }
+                        else {
+                           return 50;
+                        }
+                     }
+                     )
+                     .attr('transform', function (d) {
+                        let nameArray = ["ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GSW", "HOU", "IND", "LAC", "LAL", "MEM", "MIA", "MIL", "MIN", "NO", "NYK", "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SAS", "TOR", "UTH", "WAS"]
+                        if (d.name === "NBA") {
+                           return "rotate(-90 0 0)"
+                        }
+                        const isTeamName = (str) => str.length <= 3;
+
+                        if (isTeamName(d.name)) {
+                           let convertedRotation = (83 - ((nameArray.indexOf(d.name)) * 12));
+                           return `rotate(${convertedRotation} 0 0)`;
+                        }
+                     })
+                     .attr("xlink:href", function (d) {
+                        if (d.name === "NBA") {
+                           return "https://castrstatic-5doxhowepfdd9.stackpathdns.com/portal.sportscastr.com/v1/media/logos/Circle/NBA_Logo.png"
+                        }
+                        else if (d.name.length <= 3) {
+                           return `https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/${d.name.toLowerCase()}.png&h=80&w=80&scale=crop`
+                        }
+
+                     }
+                     )
+
+
+
+                  // Transition nodes to their new position.
+                  let nodeUpdate = node.transition()
+                     .duration(duration)
+                     .attr("transform", function (d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+
+
+                  //size of node circle
+                  nodeUpdate.select("circle")
+                     .attr("r", function (d) {
+                        if (d.depth === 1) {
+                           return 25;
+                        }
+                        else if (d.depth === 0) {
+                           return 50;
+                        }
+                        else {
+                           return 2.5;
+                        }
+                     }
+                     )
+                     .style("fill", function (d) { return d._children ? "rgba(167, 167, 167, 0.294)" : "rgba(67, 57, 167, 0.694)"; });
+
+                  nodeUpdate.select("text")
+                     .style("fill-opacity", 1)
+                     //FLIP WHEN HALF WAY
+                     .attr("transform", function (d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length + 158) + ")"; });
+
+                  // TODO: appropriate transform
+                  let nodeExit = node.exit().transition()
+                     .duration(duration)
+                     //.attr("transform", function(d) { return "diagonal(" + source.y + "," + source.x + ")"; })
+                     .remove();
+
+                  nodeExit.select("circle")
+                     .attr("r", 1e-6);
+
+                  nodeExit.select("text")
+                     .style("fill-opacity", 1e-6);
+
+                  // Update the links…
+                  let link = svg.selectAll("path.link")
+                     .data(links, function (d) { return d.target.id; });
+
+                  // Enter any new links at the parent's previous position.
+                  link.enter().insert("path", "g")
+                     .attr("class", "link")
+                     .attr("d", function (d) {
+                        let o = { x: source.x0, y: source.y0 };
+                        return diagonal({ source: o, target: o });
+                     });
+
+                  // Transition links to their new position.
+                  link.transition()
+                     .duration(duration)
+                     .attr("d", diagonal);
+
+                  // Transition exiting nodes to the parent's new position.
+                  link.exit().transition()
+                     .duration(duration)
+                     .attr("d", function (d) {
+                        let o = { x: source.x, y: source.y };
+                        return diagonal({ source: o, target: o });
+                     })
+                     .remove();
+
+                  // Stash the old positions for transition.
+                  nodes.forEach(function (d) {
+                     d.x0 = d.x;
+                     d.y0 = d.y;
+                  });
+               }
+
+
+               function removeFromCounter(node, queue) {
+                  let newQueue = [];
+                  queue.forEach(x => {
+                     if (x.name !== node.name) {
+                        newQueue.push(x);
+                     }
+                  })
+
+                  return newQueue;
+               }
+
+
+               let counter = [];
+
+
+               function click(d) {
+                  height = window.innerHeight * 2;
+                  counter.getUnique();
+
+                  if (d.children) {
+                     if (d.name.length < 4 && d.name !== "NBA") {
+                        counter = removeFromCounter(d, counter);
+                        d._children = d.children;
+                        d.children = null;
+
+                     }
+                  } else {
+                     if (d.name.length < 4 && d.name !== "NBA") {
+                        counter.push(d);
+                        d.children = d._children;
+                        d._children = null;
+                        if (counter.length > 6) {
+                           collapse(counter.shift());
+                        }
+                     }
+                  }
+                  if(d.name.length <= 3){
+                     update(d);
+                  }
+                  update(d);
+
+               }
+
+               // Collapse nodes
+               function collapse(d) {
+                  if (d.children) {
+                     d._children = d.children;
+                     d._children.forEach(collapse);
+                     d.children = null;
                   }
                }
-            })
-
-
-         svg.call(tip);
-
-         root.children.forEach(collapse); // start with all children collapsed
-         update(root);
-
-         d3.select(self.frameElement).style("height", "800px");
-
-
-         function update(source) {
-
-            // Compute the new tree layout.
-            let nodes = tree.nodes(root),
-               links = tree.links(nodes);
-            let initial = new Set();
-            let maxQueue = [];
-
-            nodes.forEach(function (d) {
-               if (d.name.length <= 3 && d.name !== "NBA") {
-                  initial.add(d);
-               }
-               if (d.name === "NBA") {
-                  d.y = d.depth * 1;
-               }
-               else if (d.parent.name === "NBA") {
-                  d.y = d.depth * 175;
-               }
-               else {
-
-                  d.y = d.depth * 125;
-               }
-
-
             });
-
-            // Update the nodes…
-            let node = svg.selectAll("g.node")
-               .data(nodes, function (d) { return d.id || (d.id = ++i); })
-               .on("mouseover", tip.show)
-               .on("mouseout", tip.hide)
-
-
-
-
-            function handleMouseOver(d, i) {  // Add interactivity
-               // console.log(d)
-            }
-
-            function handleMouseOut(d, i) {
-               // Use D3 to select element, change color back to normal
-               d3.select(this).attr({
-                  fill: "black",
-                  // r: 20
-               });
-
-               // Select text by id and then remove
-               // d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
-            }
-
-
-            // Enter any new nodes at the parent's previous position.
-            let nodeEnter = node.enter().append("g")
-               .attr("class", "node")
-               //.attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
-               .on("click", click);
-
-            nodeEnter.append("circle")
-
-
-
-            nodeEnter.append("text")
-               .attr("x", 30)
-               .attr("dy", ".35em")
-               .attr("text-anchor", "start")
-               .attr("transform", function (d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length * 8.5) + ")"; })
-               .text(function (d) {
-                  if (d.depth === 2) {
-                     let allstarName = "✭" + d.name + "✭"
-                     return allStars.includes(d.name) ? allstarName : d.name;
-                  };
-               })
-               .attr('class', function (d) {
-                  if (allStars.includes(d.name)) {
-                     return "all-star"
-                  }
-                  else {
-                     return 'non-all-star'
-                  }
-               }
-               )
-               .style("fill-opacity", 1e-6)
-
-            var imgs = svg.selectAll("image").data([0]);
-            imgs.enter()
-               .append("svg:image")
-
-            //Image Attributes
-            nodeEnter.append("svg:image")
-               .attr('x', function (d) {
-                  if (d.name === "NBA") {
-                     return -50
-                  }
-                  else {
-                     return -25;
-                  }
-               }
-               )
-               .attr('y', function (d) {
-                  if (d.name === "NBA") {
-                     return -50
-                  }
-                  else {
-                     return -25;
-                  }
-               })
-               .attr('width', function (d) {
-                  if (d.name === "NBA") {
-                     return 100
-                  }
-                  else {
-                     return 50;
-                  }
-               })
-               .attr('height', function (d) {
-                  if (d.name === "NBA") {
-                     return 100
-                  }
-                  else {
-                     return 50;
-                  }
-               }
-               )
-               .attr('transform', function (d) {
-                  let nameArray = ["ATL","BOS","BKN","CHA","CHI","CLE","DAL","DEN","DET","GSW","HOU","IND","LAC","LAL","MEM","MIA","MIL","MIN","NO","NYK","OKC","ORL","PHI","PHX","POR","SAC","SAS","TOR","UTH","WAS"]
-                  if (d.name === "NBA") {
-                     return "rotate(-90 0 0)"
-                  }
-                  const isTeamName = (str) => str.length <= 3;
-
-                  if(isTeamName(d.name)){
-                     let convertedRotation = (83-((nameArray.indexOf(d.name))*12));
-                     return `rotate(${convertedRotation} 0 0)`;
-                  }
-               })
-               .attr("xlink:href", function (d) {
-                  if (d.name === "NBA") {
-                     return "https://castrstatic-5doxhowepfdd9.stackpathdns.com/portal.sportscastr.com/v1/media/logos/Circle/NBA_Logo.png"
-                  }
-                  else if (d.name.length <= 3) {
-                     return `https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/${d.name.toLowerCase()}.png&h=80&w=80&scale=crop`
-                  }
-
-               }
-               )
-
-
-
-            // Transition nodes to their new position.
-            let nodeUpdate = node.transition()
-               .duration(duration)
-               .attr("transform", function (d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
-
-
-            //size of node circle
-            nodeUpdate.select("circle")
-               .attr("r", function (d) {
-                  if (d.depth === 1) {
-                     return 25;
-                  }
-                  else if (d.depth === 0) {
-                     return 50;
-                  }
-                  else {
-                     return 2.5;
-                  }
-               }
-               )
-               .style("fill", function (d) { return d._children ? "rgba(167, 167, 167, 0.294)" : "rgba(67, 57, 167, 0.694)"; });
-
-            nodeUpdate.select("text")
-               .style("fill-opacity", 1)
-               //FLIP WHEN HALF WAY
-               .attr("transform", function (d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length + 158) + ")"; });
-
-            // TODO: appropriate transform
-            let nodeExit = node.exit().transition()
-               .duration(duration)
-               //.attr("transform", function(d) { return "diagonal(" + source.y + "," + source.x + ")"; })
-               .remove();
-
-            nodeExit.select("circle")
-               .attr("r", 1e-6);
-
-            nodeExit.select("text")
-               .style("fill-opacity", 1e-6);
-
-            // Update the links…
-            let link = svg.selectAll("path.link")
-               .data(links, function (d) { return d.target.id; });
-
-            // Enter any new links at the parent's previous position.
-            link.enter().insert("path", "g")
-               .attr("class", "link")
-               .attr("d", function (d) {
-                  let o = { x: source.x0, y: source.y0 };
-                  return diagonal({ source: o, target: o });
-               });
-
-            // Transition links to their new position.
-            link.transition()
-               .duration(duration)
-               .attr("d", diagonal);
-
-            // Transition exiting nodes to the parent's new position.
-            link.exit().transition()
-               .duration(duration)
-               .attr("d", function (d) {
-                  let o = { x: source.x, y: source.y };
-                  return diagonal({ source: o, target: o });
-               })
-               .remove();
-
-            // Stash the old positions for transition.
-            nodes.forEach(function (d) {
-               d.x0 = d.x;
-               d.y0 = d.y;
-            });
-         }
-
-
-         function removeFromCounter(node, queue) {
-            let newQueue = [];
-            queue.forEach(x => {
-               if (x.name !== node.name) {
-                  newQueue.push(x);
-               }
-            })
-
-            return newQueue;
-         }
-
-
-         let counter = [];
-
-
-         function click(d) {
-            height = window.innerHeight * 2;
-            counter.getUnique();
-            console.log(counter)
-
-            if (d.children) {
-               if (d.name.length < 4 && d.name !== "NBA") {
-                  console.log("close")
-                  counter = removeFromCounter(d, counter);
-                  d._children = d.children;
-                  d.children = null;
-
-               }
-            } else {
-               if (d.name.length < 4 && d.name !== "NBA") {
-                  console.log("open")
-                  counter.push(d);
-                  d.children = d._children;
-                  d._children = null;
-                  if (counter.length > 6) {
-                     collapse(counter.shift());
-                  }
-               }
-            }
-
-            update(d);
-         }
-
-         // Collapse nodes
-         function collapse(d) {
-            if (d.children) {
-               d._children = d.children;
-               d._children.forEach(collapse);
-               d.children = null;
-            }
-         }
-      });
 
       </script>
 </body>
