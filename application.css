@@ -120,7 +120,7 @@
 
  #stats{
    color: #F3E0BE;
-   border: 5px double rgba(243, 224, 190, 0.342);
+   border: 8px groove rgba(243, 224, 190, 0.342);
    font-family: 'Maven Pro', sans-serif;
    font-size: 20px;
    display: flex;
@@ -181,7 +181,7 @@
 
  #stats-all-star{
    color: #F3E0BE;
-   border: 5px double #5A3E36;
+   border: 8px groove rgb(179, 134, 31);
    font-family: 'Maven Pro', sans-serif;
    font-size: 20px;
    display: flex;
@@ -192,11 +192,11 @@
  }
 
  #stats-left-all-star div{
-   color: #5A3E36;
+   color: #181818;
    margin: 14px 7px;
  }
  #stats-right-all-star div{
-   color: #5A3E36;
+   color: #181818;
    margin: 14px 7px;
  }
 
@@ -214,7 +214,7 @@
    font-weight: 1000;
    font-family: 'Maven Pro', sans-serif;
    font-size: 30px;
-   color: #5A3E36;
+   color: #181818;
  }
 
 
