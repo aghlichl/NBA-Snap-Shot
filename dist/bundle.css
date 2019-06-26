@@ -16,6 +16,10 @@
 .title-text span.letters {
   font-size: 7.5vh; }
 
+#icon-size {
+  font-size: 7.5vh;
+  margin-bottom: 2.5vh; }
+
 #last-letter {
   margin-bottom: 3vh; }
 
