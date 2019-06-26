@@ -3,7 +3,7 @@
 
 .rainbow-text {
   font-family: 'Orbitron', sans-serif;
-  position: absolute;
+  position: fixed;
   top: 6%;
   display: block;
   left: 5%; }
@@ -14,10 +14,10 @@
   text-align: center; }
 
 .title-text span.letters {
-  font-size: 3rem; }
+  font-size: 7.5vh; }
 
 #last-letter {
-  margin-bottom: 20px; }
+  margin-bottom: 3vh; }
 
 .letters {
   color: #fff;
