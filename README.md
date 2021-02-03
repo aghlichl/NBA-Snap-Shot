@@ -28,7 +28,6 @@ Originally I planned to have all the player names shown at the start, however I 
 ```js
  function click(d) {
                counter.getUnique();
-               console.log(counter)
 
                 if (d.children) {
                    if(d.name.length < 4){
