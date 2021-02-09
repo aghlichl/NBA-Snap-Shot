@@ -2,29 +2,35 @@
   cursor: pointer;
 }
 
+#wholePage {
+  display: flex;
+  flex-direction: row;
+}
+
 .rainbow-text {
   font-family: "Orbitron", sans-serif;
-  //position: absolute;
-  //top: 6%;
-  //display: block;
-  //left: 5%;
+  position: absolute;
+  top: 6%;
+  display: block;
+  left: 5%;
 }
 
 .title-text {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  text-align: start;
 }
 
 #icon-size {
-  padding: 40px 0px;
+  padding: 10px 0px;
 }
 
+
 .letters {
-  font-size: 1px;
+  font-size: 5.5vh;
   color: rgb(43, 255, 0);
   text-shadow: 2px 2px 6px #333;
-  animation: color-changer 5s infinite;
+  animation: color-changer 10s infinite;
   transition: color-changer ease-in-out;
   @for $i from 1 through 7 {
     &:nth-of-type(#{$i}) {
@@ -299,12 +305,13 @@ center h4 {
 /* background: black;  */
 /* } */
 
-/* #splash{
+#treeSection{
   display: flex;
   flex-direction: row;
   justify-content: flex-start
 } 
 
+/*
 @keyframes pulse {
     0%     { opacity: .1; }
     20%    { opacity: .8; }
