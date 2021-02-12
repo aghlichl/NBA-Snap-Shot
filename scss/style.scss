@@ -1,10 +1,24 @@
+// body{
+//   overflow: hidden;
+// }
+
+svg {
+  display: block;
+  margin: auto;
+  border: 5px solid gray;
+}
+
 .node {
   cursor: pointer;
 }
 
-#wholePage {
+.radial-tree{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
 }
 
 .rainbow-text {
@@ -22,12 +36,13 @@
 }
 
 #icon-size {
-  padding: 10px 0px;
+  padding: 2px 0px;
 }
 
 
+
 .letters {
-  font-size: 5.5vh;
+  font-size: 2.5vw;
   color: rgb(43, 255, 0);
   text-shadow: 2px 2px 6px #333;
   animation: color-changer 10s infinite;

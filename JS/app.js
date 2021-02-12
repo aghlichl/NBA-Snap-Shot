@@ -55,9 +55,10 @@ fetch("data/nba.json")
     //     console.log("checking")
     //     height = window.innerHeight
     //  }
-    let diameter = window.screen.availWidth;
+    let diameter = window.innerWidth;
     let width = diameter;
-    let height = window.screen.availHeight;
+    let height = window.innerHeight;
+    console.log(window.innerWidth, window.innerHeight)
 
     // let margin = { top: 220, right: 120, bottom: 220, left: 120 };
     // width = width,
@@ -87,7 +88,7 @@ fetch("data/nba.json")
     let svg = d3
       .select("body")
       .append("svg")
-      //.attr('class', "radial-tree")
+      .attr('class', "radial-tree")
       .attr("width", width)
       .attr("height", height)
       .append("g")
