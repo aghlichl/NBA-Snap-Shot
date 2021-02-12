@@ -1,7 +1,6 @@
 svg {
   display: block;
-  margin: auto;
-  border: 5px solid gray; }
+  margin: auto; }
 
 .node {
   cursor: pointer; }
