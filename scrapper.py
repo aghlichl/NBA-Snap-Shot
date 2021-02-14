@@ -20,6 +20,38 @@ def nba_scraper():
     stats2021
     pic_id_hash = dict()
     nba_hash = dict()
+    nba_team_hash = {
+        "ATL": 'ATL',
+        "BOS": 'BOS',
+        "BKN": 'BRK',
+        "CHI": 'CHI',
+        "CHA": 'CHO',
+        "CLE": 'CLE',
+        "DAL": 'DAL',
+        "DEN": 'DEN',
+        "DET": 'DET',
+        "GSW": 'GSW',
+        "HOU": 'HOU',
+        "IND": 'IND',
+        "LAC": 'LAC',
+        "LAL": 'LAL',
+        "MEM": 'MEM',
+        "MIA": 'MIA',
+        "MIL": 'MIL',
+        "MIN": 'MIN',
+        "NO": 'NOP',
+        "NYK": 'NYK',
+        "OKC": 'OKC',
+        "ORL": 'ORL',
+        "PHI": 'PHI',
+        "PHX": 'PHO',
+        "POR": 'POR',
+        "SAC": 'SAC',
+        "SAS": 'SAS',
+        "TOR": 'TOR',
+        "UTH": 'UTA',
+        "WAS": 'WAS'
+    }
     formatted_nba_hash ={
         'name': 'NBA',	
         'children': [{
@@ -31,7 +63,7 @@ def nba_scraper():
                 'children': []
             },
             {
-                'name': 'BRK',
+                'name': 'BKN',
                 'children': []
             },
             {
@@ -39,7 +71,7 @@ def nba_scraper():
                 'children': []
             },
             {
-                'name': 'CHO',
+                'name': 'CHA',
                 'children': []
             },
             {
@@ -96,7 +128,7 @@ def nba_scraper():
                 'children': []
             },
             {
-                'name': 'NOP',
+                'name': 'NO',
                 'children': []
             },
             {
@@ -116,7 +148,7 @@ def nba_scraper():
                 'children': []
             },
             {
-                'name': 'PHO',
+                'name': 'PHX',
                 'children': []
             },
             {
@@ -136,7 +168,7 @@ def nba_scraper():
                 'children': []
             },
             {
-                'name': 'UTA',
+                'name': 'UTH',
                 'children': []
             },
             {
@@ -180,9 +212,10 @@ def nba_scraper():
 
     for full_name in nba_hash:
         for i in formatted_nba_hash['children']:
-            if nba_hash[full_name]['Tm'] == i['name']:
+            if nba_hash[full_name]['Tm'] == nba_team_hash[i['name']]:
                 i['children'].append(nba_hash[full_name])
         
+
 
 
 
