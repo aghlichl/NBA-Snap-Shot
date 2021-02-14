@@ -1,6 +1,5 @@
 {
 	"name": "NBA",
-	"i": "testing 123 123 123",
 	"children": [{
 			"name": "ATL",
 			"children": [{

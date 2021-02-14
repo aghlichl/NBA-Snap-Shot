@@ -43,7 +43,8 @@ Array.prototype.getUnique = function () {
   return a;
 };
 
-fetch("data/nba.json")
+// fetch("data/nba.json")
+fetch("data/statistics.json")
   .then((res) => res.json())
   .then((json) => {
     //  let diameter = window.innerWidth;

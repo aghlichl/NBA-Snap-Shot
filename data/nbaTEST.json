@@ -1,1 +1,125 @@
-{"please": "work"}
+{
+    "name": "NBA",	
+    "children": [{
+        "name": "ATL",
+        "children": []
+    },
+    {
+        "name": "BOS",
+        "children": []
+    },
+    {
+        "name": "BRK",
+        "children": []
+    },
+    {
+        "name": "CHI",
+        "children": []
+    },
+    {
+        "name": "CHO",
+        "children": []
+    },
+    {
+        "name": "CLE",
+        "children": []
+    },
+    {
+        "name": "DAL",
+        "children": []
+    },
+    {
+        "name": "DEN",
+        "children": []
+    },
+
+    {
+        "name": "DET",
+        "children": []
+    },
+    {
+        "name": "GSW",
+        "children": []
+    },
+    {
+        "name": "HOU",
+        "children": []
+    },
+    {
+        "name": "IND",
+        "children": []
+    },
+    {
+        "name": "LAC",
+        "children": []
+    },
+    {
+        "name": "LAL",
+        "children": []
+    },
+    {
+        "name": "MEM",
+        "children": []
+    },
+    {
+        "name": "MIA",
+        "children": []
+    },
+    {
+        "name": "MIL",
+        "children": []
+    },
+    {
+        "name": "MIN",
+        "children": []
+    },
+    {
+        "name": "NOP",
+        "children": []
+    },
+    {
+        "name": "NYK",
+        "children": []
+    },
+    {
+        "name": "OKC",
+        "children": []
+    },
+    {
+        "name": "ORL",
+        "children": []
+    },
+    {
+        "name": "PHI",
+        "children": []
+    },
+    {
+        "name": "PHO",
+        "children": []
+    },
+    {
+        "name": "POR",
+        "children": []
+    },
+    {
+        "name": "SAC",
+        "children": []
+    },
+    {
+        "name": "SAS",
+        "children": []
+    },
+    {
+        "name": "TOR",
+        "children": []
+    },
+    {
+        "name": "UTA",
+        "children": []
+    },
+    {
+        "name": "WAS",
+        "children": []
+    }
+    ]
+}

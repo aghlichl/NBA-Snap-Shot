@@ -1,0 +1,1 @@
+curl -X PUT -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/aghlichl/NBA-Snap-Shot/data/nbaTEST.json -d '{"message":"Curl Request Update Test","content":"MYDOGTEDDY"}'
