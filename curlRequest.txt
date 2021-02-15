@@ -1,1 +1,3 @@
-curl -i -u aghlichl:66757567f6e90833c39b56afe42d6aeed98d6a9f -X PUT -H "Accept: application/vnd.github.v3+json" -d '{"message":"Curl Request Update Test", "sha:": "content":"MYDOGTEDDY"}' https://api.github.com/repos/aghlichl/NBA-Snap-Shot/data/nbaTEST.json
+curl -i -u aghlichl:fe52099d29ddadbfcf18e70b56cf2d1f51fa24fa https://api.github.com/repos/aghlichl/NBA-Snap-Shot/contents/data/nbaTEST.json
+
+curl -i -u aghlichl:fe52099d29ddadbfcf18e70b56cf2d1f51fa24fa -X PUT -H "Accept: application/vnd.github.v3+json" -d "{\"message\":\"Curl Request Update Test\", \"sha\": \"c95c705b17128c2f7a9a923782c86dc64d40b2fa\", \"content\":\"TVlET0dURUREWQ==\"}" https://api.github.com/repos/aghlichl/NBA-Snap-Shot/contents/data/nbaTEST.json

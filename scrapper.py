@@ -1,22 +1,50 @@
-import requests
+import urllib3
 from bs4 import BeautifulSoup
 import datetime
 import json
 from unidecode import unidecode
+import base64
 
-url = 'https://www.basketball-reference.com/leagues/NBA_2021_per_game.html'
-pic_id_url_2019 = 'http://data.nba.net/data/10s/prod/v1/2019/players.json'
-pic_id_url_2020 = 'http://data.nba.net/data/10s/prod/v1/2020/players.json'
+http = urllib3.PoolManager()
+
+def gitAPI(raw_content):
+    access_token = "fe52099d29ddadbfcf18e70b56cf2d1f51fa24fa" 
+    headers = {'Authorization':"Token "+access_token}
+    url = "https://api.github.com/repos/aghlichl/NBA-Snap-Shot/contents/data/nbaTEST.json"
+    #oh
+    # res = requests.get(url, headers=headers).json()
+    raw_res = http.request('GET', url, headers=headers)
+    raw_res = raw_res.data
+    res = json.loads(raw_res)
+    sha1 = res["sha"]
+    raw_content = raw_content.encode()
+    content =  base64.b64encode(raw_content)
+    content = content.decode()
+    encoded_body = json.dumps({"sha": sha1, "message": "updated stats through GitHub API", "content": content })
+    resPut = http.request('PUT', url, headers=headers, body=encoded_body)
+    print(resPut.data)
+    # resPut = requests.put(url, headers=headers, json={"sha": sha1, "message": "updated stats through GitHub API", "content": content }) 
 
 def is_ascii(s):
     return all(ord(c) < 128 for c in s)
 
 def nba_scraper():
-    stats2021 = requests.get(url)
-    pic_id_2021 = requests.get(pic_id_url_2020)
-    pic_id_2020 = requests.get(pic_id_url_2019)
-    pic_id_json_2021 = pic_id_2021.json()
-    pic_id_json_2020 = pic_id_2020.json()
+    url = 'https://www.basketball-reference.com/leagues/NBA_2021_per_game.html'
+    pic_id_url_2019 = 'http://data.nba.net/data/10s/prod/v1/2019/players.json'
+    pic_id_url_2020 = 'http://data.nba.net/data/10s/prod/v1/2020/players.json'
+
+    raw_stats2021 = http.request('GET', url)
+    stats2021 = raw_stats2021.data
+    # stats2021 = requests.get(url)
+    raw_pic_id_2021 = http.request('GET', pic_id_url_2020)
+    pic_id_json_2021 = json.loads(raw_pic_id_2021.data)
+    # pic_id_2021 = requests.get(pic_id_url_2020)
+    raw_pic_id_2020 = http.request('GET', pic_id_url_2019)
+    pic_id_json_2020 = json.loads(raw_pic_id_2020.data)
+
+    # pic_id_2020 = requests.get(pic_id_url_2019)
+    # pic_id_json_2021 = pic_id_2021.json()
+    # pic_id_json_2020 = pic_id_2020.json()
     stats2021
     pic_id_hash = dict()
     nba_hash = dict()
@@ -178,7 +206,8 @@ def nba_scraper():
         ]
     }
     headers = ['Name', 'Pos', 'Age', 'Tm', 'G', 'GS', 'MP', 'FG', 'FGA', 'FG%', '3P', '3PA', '3P%', '2P', '2PA', '2P%', 'eFG%', 'FT', 'FTA', 'FT%', 'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS']
-    soup = BeautifulSoup(stats2021.content, 'lxml')
+    # soup = BeautifulSoup(stats2021.content, 'lxml')
+    soup = BeautifulSoup(stats2021, 'lxml')
     player_stats = soup.find_all('td')
 
     for j in pic_id_json_2020['league']['standard']:
@@ -199,7 +228,6 @@ def nba_scraper():
             if is_ascii(player_stats[i].text) == False:
                 curr_player_name = unidecode(player_stats[i].text)
             else:
-                print(player_stats[i].text)
                 curr_player_name = player_stats[i].text
             
             curr_player_name = curr_player_name.split(" ")[:2]
@@ -219,13 +247,20 @@ def nba_scraper():
 
 
 
-    with open('data/statistics.json', 'w', encoding='utf-8') as writeJSON:
-        json.dump(formatted_nba_hash, writeJSON, ensure_ascii=False)
+    # with open('data/statistics.json', 'w', encoding='utf-8') as writeJSON:
+    #     json.dump(formatted_nba_hash, writeJSON, ensure_ascii=False)
+
+    formatted_nba_json = json.dumps(formatted_nba_hash)
+
+    gitAPI(formatted_nba_json)
 
     return{
         'date': str(datetime.datetime.now()),
         'contents': nba_hash
     }
+
+
+
 
 
 nba_scraper()
