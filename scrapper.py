@@ -11,7 +11,6 @@ def gitAPI(raw_content):
     access_token = "fe52099d29ddadbfcf18e70b56cf2d1f51fa24fa" 
     headers = {'Authorization':"Token "+access_token}
     url = "https://api.github.com/repos/aghlichl/NBA-Snap-Shot/contents/data/nbaTEST.json"
-    #oh
     # res = requests.get(url, headers=headers).json()
     raw_res = http.request('GET', url, headers=headers)
     raw_res = raw_res.data
