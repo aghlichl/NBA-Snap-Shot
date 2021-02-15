@@ -43,6 +43,8 @@ Array.prototype.getUnique = function () {
   return a;
 };
 
+let currFGper, curr3Pper, currFTper;
+
 // fetch("data/nba.json")
 fetch("data/statistics.json")
   .then((res) => res.json())
@@ -101,6 +103,8 @@ fetch("data/statistics.json")
     root.x0 = 0;
     root.y0 = 0;
 
+    
+
     var tip = d3.tip().attr("class", "d3-tip");
     tip
       .offset(function (d) {
@@ -111,6 +115,9 @@ fetch("data/statistics.json")
       })
       .html(function (d) {
         if (d.name.length > 3) {
+          d["FG%"] ? currFGper = (100*parseFloat(d["FG%"])).toFixed(2) : currFGper = 0.0
+          d["FT%"] ? currFTper = (100*parseFloat(d["FT%"])).toFixed(2) : currFTper = 0.0
+          d["3P%"] ? curr3Pper = (100*parseFloat(d["3P%"])).toFixed(2) : curr3Pper = 0.0
           if (allStars.includes(d.name)) {
             return (
               "<div id='positioner-all-star'><div id='profile-all-star'> <center><h2 id='all-star-name'>" +
@@ -121,29 +128,53 @@ fetch("data/statistics.json")
               "<div id='stats-left-all-star'>" +
               "<div>" +
               "PTS - " +
-              d.points +
+              d.PTS +
               "</div>" +
               "<div>" +
-              "RB - " +
-              d.rebounds +
+              "REB - " +
+              d.TRB +
               "</div>" +
               "<div>" +
               "AST - " +
-              d.assists +
+              d.AST +
+              "</div>" +
+              "<div>" +
+              "STL - " +
+              d.STL +
+              "</div>" +
+              "<div>" +
+              "BLK - " +
+              d.BLK +
+              "</div>" +
+              "<div>" +
+              "TOV - " +
+              d.TOV +
               "</div>" +
               "</div>" +
               "<div id='stats-right-all-star'>" +
               "<div>" +
               "FG% - " +
-              d.FG +
+              currFGper +
               "</div>" +
               "<div>" +
-              "FG3% - " +
-              d.FG3 +
+              "3P% - " +
+              curr3Pper +
               "</div>" +
               "<div>" +
               "FT% - " +
-              d.FT +
+              currFTper +
+              "</div>" +
+              "<div>" +
+              "GP  - " +
+              d.G +
+              "</div>" +
+              "<div>" +
+              "MIN - " +
+              d.MP +
+              "</div>" +
+              "<div>" +
+              "AGE - " +
+              d.Age +
               "</div>" +
               "</div>" +
               "</div>"
@@ -158,29 +189,53 @@ fetch("data/statistics.json")
               "<div id='stats-left'>" +
               "<div>" +
               "PTS - " +
-              d.points +
+              d.PTS +
               "</div>" +
               "<div>" +
-              "RB - " +
-              d.rebounds +
+              "REB - " +
+              d.TRB +
               "</div>" +
               "<div>" +
               "AST - " +
-              d.assists +
+              d.AST +
+              "</div>" +
+              "<div>" +
+              "STL - " +
+              d.STL +
+              "</div>" +
+              "<div>" +
+              "BLK - " +
+              d.BLK +
+              "</div>" +
+              "<div>" +
+              "TOV - " +
+              d.TOV +
               "</div>" +
               "</div>" +
               "<div id='stats-right'>" +
               "<div>" +
               "FG% - " +
-              d.FG +
+              currFGper +
               "</div>" +
               "<div>" +
-              "FG3% - " +
-              d.FG3 +
+              "3P% - " +
+              curr3Pper +
               "</div>" +
               "<div>" +
               "FT% - " +
-              d.FT +
+              currFTper +
+              "</div>" +
+              "<div>" +
+              "GP  - " +
+              d.G +
+              "</div>" +
+              "<div>" +
+              "MIN - " +
+              d.MP +
+              "</div>" +
+              "<div>" +
+              "AGE - " +
+              d.Age +
               "</div>" +
               "</div>" +
               "</div>"
