@@ -152,7 +152,7 @@ svg {
 .rainbow-text {
   font-family: "Orbitron", sans-serif;
   position: absolute;
-  top: 6%;
+  bottom: 6%;
   display: block;
   left: 5%;
 }
@@ -170,7 +170,7 @@ svg {
 
 
 .letters {
-  font-size: 2.5vw;
+  font-size: 1.5vw;
   color: rgb(43, 255, 0);
   text-shadow: 2px 2px 6px #333;
   animation: color-changer 10s infinite;
@@ -183,7 +183,7 @@ svg {
 }
 
 
-#positioner {
+#positioner-right {
   transform: scale(0.85);
   position: fixed;
   top: 0vh;
@@ -216,11 +216,76 @@ svg {
   border-radius: 3%;
   animation: grz 5s ease infinite;
 }
-#positioner-all-star {
+
+#positioner-left {
+  transform: scale(0.85);
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
+  line-height: 1;
+  font-weight: bold;
+  padding: 15px 20px;
+  background: linear-gradient(
+      -225deg,
+      #26daad2d 0%,
+      #001510 25%,
+      #360033 60%,
+      #0b8893b9 100%
+    ),
+    repeating-linear-gradient(
+      -115deg,
+      transparent,
+      transparent 20px,
+      rgba(255, 255, 255, 0.1) 20px,
+      rgba(255, 255, 255, 0.1) 40px
+    ),
+    repeating-linear-gradient(
+      115deg,
+      transparent,
+      transparent 20px,
+      rgba(255, 255, 255, 0.1) 20px,
+      rgba(255, 255, 255, 0.1) 40px
+    );
+  color: #fff;
+  border-radius: 3%;
+  animation: grz 5s ease infinite;
+}
+
+#positioner-all-star-right {
   transform: scale(0.85);
   position: fixed;
   top: 0vh;
   right: 0vw;
+  line-height: 1;
+  font-weight: bold;
+  padding: 15px 20px;
+  background-color: #151823; 
+
+  // background: radial-gradient(
+  //     ellipse farthest-corner at right bottom,
+  //     #fedb37 0%,
+  //     #fdb931 8%,
+  //     #9f7928 30%,
+  //     #8a6e2f 40%,
+  //     transparent 80%
+  //   ),
+  //   radial-gradient(
+  //     ellipse farthest-corner at left top,
+  //     #ffffff 0%,
+  //     #ffffac 8%,
+  //     #d1b464 25%,
+  //     #5d4a1f 62.5%,
+  //     #5d4a1f 100%
+  //   );
+  color: black;
+  border-radius: 3%;
+}
+
+#positioner-all-star-left {
+  transform: scale(0.85);
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
   line-height: 1;
   font-weight: bold;
   padding: 15px 20px;

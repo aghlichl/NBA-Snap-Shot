@@ -27,7 +27,46 @@ let allStars = [
   "Dirk Nowitzki",
 ];
 
-// require('./application.scss');
+let firstHalf = [
+  "ATL",
+  "BOS",
+  "BRK",
+  "CHI",
+  "CHO",
+  "CLE",
+  "DAL",
+  "DEN",
+  "DET",
+  "GSW",
+  "HOU",
+  "IND",
+  "LAC",
+  "LAL",
+  "MEM"
+];
+
+let secondHalf = [
+  "MIA",
+  "MIL",
+  "MIN",
+  "NOP",
+  "NYK",
+  "OKC",
+  "ORL",
+  "PHI",
+  "PHO",
+  "POR",
+  "SAC",
+  "SAS",
+  "TOR",
+  "UTA",
+  "WAS"
+];
+
+// let leftSideCss =
+//   let rightSideCss = "<div id='positioner'><div id='profile'> <center><h2>"
+//     let leftSideCssAllStar =
+//     let rightSideCssAllStar = "<div id='positioner-all-star'><div id='profile-all-star'> <center><h2 id='all-star-name'>"
 
 Array.prototype.getUnique = function () {
   var o = {},
@@ -61,7 +100,7 @@ fetch("data/statistics.json")
     let diameter = window.innerWidth;
     let width = diameter;
     let height = window.innerHeight;
-    console.log(window.innerWidth, window.innerHeight)
+    console.log(window.innerWidth, window.innerHeight);
 
     // let margin = { top: 220, right: 120, bottom: 220, left: 120 };
     // width = width,
@@ -91,7 +130,7 @@ fetch("data/statistics.json")
     let svg = d3
       .select("body")
       .append("svg")
-      .attr('class', "radial-tree")
+      .attr("class", "radial-tree")
       .attr("width", width)
       .attr("height", height)
       .append("g")
@@ -103,8 +142,6 @@ fetch("data/statistics.json")
     root.x0 = 0;
     root.y0 = 0;
 
-    
-
     var tip = d3.tip().attr("class", "d3-tip");
     tip
       .offset(function (d) {
@@ -115,73 +152,144 @@ fetch("data/statistics.json")
       })
       .html(function (d) {
         if (d.name.length > 3) {
-          d["FG%"] ? currFGper = (100*parseFloat(d["FG%"])).toFixed(2) : currFGper = 0.0
-          d["FT%"] ? currFTper = (100*parseFloat(d["FT%"])).toFixed(2) : currFTper = 0.0
-          d["3P%"] ? curr3Pper = (100*parseFloat(d["3P%"])).toFixed(2) : curr3Pper = 0.0
+          d["FG%"]
+            ? (currFGper = (100 * parseFloat(d["FG%"])).toFixed(2))
+            : (currFGper = 0.0);
+          d["FT%"]
+            ? (currFTper = (100 * parseFloat(d["FT%"])).toFixed(2))
+            : (currFTper = 0.0);
+          d["3P%"]
+            ? (curr3Pper = (100 * parseFloat(d["3P%"])).toFixed(2))
+            : (curr3Pper = 0.0);
           if (allStars.includes(d.name)) {
-            return (
-              "<div id='positioner-all-star'><div id='profile-all-star'> <center><h2 id='all-star-name'>" +
-              d.name +
-              "</h2></center>" +
-              d.img +
-              "<div id='stats-all-star'>" +
-              "<div id='stats-left-all-star'>" +
-              "<div>" +
-              "PTS - " +
-              d.PTS +
-              "</div>" +
-              "<div>" +
-              "REB - " +
-              d.TRB +
-              "</div>" +
-              "<div>" +
-              "AST - " +
-              d.AST +
-              "</div>" +
-              "<div>" +
-              "STL - " +
-              d.STL +
-              "</div>" +
-              "<div>" +
-              "BLK - " +
-              d.BLK +
-              "</div>" +
-              "<div>" +
-              "TOV - " +
-              d.TOV +
-              "</div>" +
-              "</div>" +
-              "<div id='stats-right-all-star'>" +
-              "<div>" +
-              "FG% - " +
-              currFGper +
-              "</div>" +
-              "<div>" +
-              "3P% - " +
-              curr3Pper +
-              "</div>" +
-              "<div>" +
-              "FT% - " +
-              currFTper +
-              "</div>" +
-              "<div>" +
-              "GP  - " +
-              d.G +
-              "</div>" +
-              "<div>" +
-              "MIN - " +
-              d.MP +
-              "</div>" +
-              "<div>" +
-              "AGE - " +
-              d.Age +
-              "</div>" +
-              "</div>" +
-              "</div>"
-            );
+            if (firstHalf.includes(d.Tm)) {
+              return (
+                "<div id='positioner-all-star-left'><div id='profile-all-star'> <center><h2 id='all-star-name'>" +
+                d.name +
+                "</h2></center>" +
+                d.img +
+                "<div id='stats-all-star'>" +
+                "<div id='stats-left-all-star'>" +
+                "<div>" +
+                "PTS - " +
+                d.PTS +
+                "</div>" +
+                "<div>" +
+                "REB - " +
+                d.TRB +
+                "</div>" +
+                "<div>" +
+                "AST - " +
+                d.AST +
+                "</div>" +
+                "<div>" +
+                "STL - " +
+                d.STL +
+                "</div>" +
+                "<div>" +
+                "BLK - " +
+                d.BLK +
+                "</div>" +
+                "<div>" +
+                "TOV - " +
+                d.TOV +
+                "</div>" +
+                "</div>" +
+                "<div id='stats-right-all-star'>" +
+                "<div>" +
+                "FG% - " +
+                currFGper +
+                "</div>" +
+                "<div>" +
+                "3P% - " +
+                curr3Pper +
+                "</div>" +
+                "<div>" +
+                "FT% - " +
+                currFTper +
+                "</div>" +
+                "<div>" +
+                "GP  - " +
+                d.G +
+                "</div>" +
+                "<div>" +
+                "MIN - " +
+                d.MP +
+                "</div>" +
+                "<div>" +
+                "AGE - " +
+                d.Age +
+                "</div>" +
+                "</div>" +
+                "</div>"
+              );
+            }
+            else {
+              return (
+                "<div id='positioner-all-star-right'><div id='profile-all-star'> <center><h2 id='all-star-name'>" +
+                d.name +
+                "</h2></center>" +
+                d.img +
+                "<div id='stats-all-star'>" +
+                "<div id='stats-left-all-star'>" +
+                "<div>" +
+                "PTS - " +
+                d.PTS +
+                "</div>" +
+                "<div>" +
+                "REB - " +
+                d.TRB +
+                "</div>" +
+                "<div>" +
+                "AST - " +
+                d.AST +
+                "</div>" +
+                "<div>" +
+                "STL - " +
+                d.STL +
+                "</div>" +
+                "<div>" +
+                "BLK - " +
+                d.BLK +
+                "</div>" +
+                "<div>" +
+                "TOV - " +
+                d.TOV +
+                "</div>" +
+                "</div>" +
+                "<div id='stats-right-all-star'>" +
+                "<div>" +
+                "FG% - " +
+                currFGper +
+                "</div>" +
+                "<div>" +
+                "3P% - " +
+                curr3Pper +
+                "</div>" +
+                "<div>" +
+                "FT% - " +
+                currFTper +
+                "</div>" +
+                "<div>" +
+                "GP  - " +
+                d.G +
+                "</div>" +
+                "<div>" +
+                "MIN - " +
+                d.MP +
+                "</div>" +
+                "<div>" +
+                "AGE - " +
+                d.Age +
+                "</div>" +
+                "</div>" +
+                "</div>"
+              )
+            }
           } else {
+            if (firstHalf.includes(d.Tm)) {
             return (
-              "<div id='positioner'><div id='profile'> <center><h2>" +
+              "<div id='positioner-left'><div id='profile'> <center><h2>" +
               d.name +
               "</h2></center>" +
               d.img +
@@ -240,6 +348,69 @@ fetch("data/statistics.json")
               "</div>" +
               "</div>"
             );
+            }
+            else{
+              return (
+                "<div id='positioner-right'><div id='profile'> <center><h2>" +
+                d.name +
+                "</h2></center>" +
+                d.img +
+                "<div id='stats'>" +
+                "<div id='stats-left'>" +
+                "<div>" +
+                "PTS - " +
+                d.PTS +
+                "</div>" +
+                "<div>" +
+                "REB - " +
+                d.TRB +
+                "</div>" +
+                "<div>" +
+                "AST - " +
+                d.AST +
+                "</div>" +
+                "<div>" +
+                "STL - " +
+                d.STL +
+                "</div>" +
+                "<div>" +
+                "BLK - " +
+                d.BLK +
+                "</div>" +
+                "<div>" +
+                "TOV - " +
+                d.TOV +
+                "</div>" +
+                "</div>" +
+                "<div id='stats-right'>" +
+                "<div>" +
+                "FG% - " +
+                currFGper +
+                "</div>" +
+                "<div>" +
+                "3P% - " +
+                curr3Pper +
+                "</div>" +
+                "<div>" +
+                "FT% - " +
+                currFTper +
+                "</div>" +
+                "<div>" +
+                "GP  - " +
+                d.G +
+                "</div>" +
+                "<div>" +
+                "MIN - " +
+                d.MP +
+                "</div>" +
+                "<div>" +
+                "AGE - " +
+                d.Age +
+                "</div>" +
+                "</div>" +
+                "</div>"
+              );
+            }
           }
         }
       });

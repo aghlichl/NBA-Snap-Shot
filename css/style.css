@@ -88,7 +88,7 @@ svg {
 .rainbow-text {
   font-family: "Orbitron", sans-serif;
   position: absolute;
-  top: 6%;
+  bottom: 6%;
   display: block;
   left: 5%; }
 
@@ -101,7 +101,7 @@ svg {
   padding: 2px 0px; }
 
 .letters {
-  font-size: 2.5vw;
+  font-size: 1.5vw;
   color: #2bff00;
   text-shadow: 2px 2px 6px #333;
   animation: color-changer 10s infinite;
@@ -121,7 +121,7 @@ svg {
   .letters:nth-of-type(7) {
     animation-delay: 700ms; }
 
-#positioner {
+#positioner-right {
   transform: scale(0.85);
   position: fixed;
   top: 0vh;
@@ -134,11 +134,36 @@ svg {
   border-radius: 3%;
   animation: grz 5s ease infinite; }
 
-#positioner-all-star {
+#positioner-left {
+  transform: scale(0.85);
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
+  line-height: 1;
+  font-weight: bold;
+  padding: 15px 20px;
+  background: linear-gradient(-225deg, #26daad2d 0%, #001510 25%, #360033 60%, #0b8893b9 100%), repeating-linear-gradient(-115deg, transparent, transparent 20px, rgba(255, 255, 255, 0.1) 20px, rgba(255, 255, 255, 0.1) 40px), repeating-linear-gradient(115deg, transparent, transparent 20px, rgba(255, 255, 255, 0.1) 20px, rgba(255, 255, 255, 0.1) 40px);
+  color: #fff;
+  border-radius: 3%;
+  animation: grz 5s ease infinite; }
+
+#positioner-all-star-right {
   transform: scale(0.85);
   position: fixed;
   top: 0vh;
   right: 0vw;
+  line-height: 1;
+  font-weight: bold;
+  padding: 15px 20px;
+  background-color: #151823;
+  color: black;
+  border-radius: 3%; }
+
+#positioner-all-star-left {
+  transform: scale(0.85);
+  position: fixed;
+  top: 0vh;
+  left: 0vw;
   line-height: 1;
   font-weight: bold;
   padding: 15px 20px;
