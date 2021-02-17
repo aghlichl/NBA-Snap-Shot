@@ -97,6 +97,7 @@ fetch("data/statistics.json")
         console.log("checking")
         height = window.innerHeight
      }
+     console.log(height, width)
     // let diameter = window.innerWidth;
     // let width = diameter;
     // let height = window.innerHeight;
@@ -126,7 +127,7 @@ fetch("data/statistics.json")
     let diagonal = d3.svg.diagonal.radial().projection(function (d) {
       return [d.y, (d.x / 180) * Math.PI];
     });
-
+    
     let svg = d3
       .select("body")
       .append("svg")
@@ -141,6 +142,40 @@ fetch("data/statistics.json")
     root = twentyNineTeen;
     root.x0 = 0;
     root.y0 = 0;
+
+    d3.select(window).on('resize', resize); 
+
+    function resize() {
+    // update width
+      width = parseInt(d3.select('.radial-tree').style('width'), 10);
+      width = width - margin.left - margin.right;
+
+      // resize the chart
+      x.range([0, width]);
+      d3.select(tree.node().parentNode)
+          .style('height', (y.rangeExtent()[1] + margin.top + margin.bottom) + 'px')
+          .style('width', (width + margin.left + margin.right) + 'px');
+
+      tree.selectAll('rect.background')
+          .attr('width', width);
+
+      tree.selectAll('rect.percent')
+          .attr('width', function(d) { return x(d.percent); });
+
+      // update median ticks
+      var median = d3.median(tree.selectAll('.bar').data(), 
+          function(d) { return d.percent; });
+
+      tree.selectAll('line.median')
+          .attr('x1', x(median))
+          .attr('x2', x(median));
+
+
+      // update axes
+      tree.select('.x.axis.top').call(xAxis.orient('top'));
+      tree.select('.x.axis.bottom').call(xAxis.orient('bottom'));
+
+    }
 
     var tip = d3.tip().attr("class", "d3-tip");
     tip
@@ -423,6 +458,8 @@ fetch("data/statistics.json")
     update(root);
 
     d3.select(self.frameElement).style("height", "800px");
+
+   
 
     function update(source) {
       // Compute the new tree layout.
