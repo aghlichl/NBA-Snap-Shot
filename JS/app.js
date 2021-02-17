@@ -88,19 +88,19 @@ let currFGper, curr3Pper, currFTper;
 fetch("data/statistics.json")
   .then((res) => res.json())
   .then((json) => {
-    //  let diameter = window.innerWidth;
-    //  let width = window.innerWidth;
-    //  let heightRatio = (946 / window.innerHeight);
-    //  let height = window.innerHeight * heightRatio;
-    //  console.log(window.innerHeight, window.innerWidth);
-    //  if (window.innerHeight >= 946) {
-    //     console.log("checking")
-    //     height = window.innerHeight
-    //  }
-    let diameter = window.innerWidth;
-    let width = diameter;
-    let height = window.innerHeight;
-    console.log(window.innerWidth, window.innerHeight);
+     let diameter = window.innerWidth;
+     let width = 946;
+     let heightRatio = (946 / window.innerHeight);
+     let height = window.innerHeight * heightRatio;
+     console.log(window.innerHeight, window.innerWidth);
+     if (window.innerHeight >= 946) {
+        console.log("checking")
+        height = window.innerHeight
+     }
+    // let diameter = window.innerWidth;
+    // let width = diameter;
+    // let height = window.innerHeight;
+    // console.log(window.innerWidth, window.innerHeight);
 
     // let margin = { top: 220, right: 120, bottom: 220, left: 120 };
     // width = width,
@@ -164,7 +164,7 @@ fetch("data/statistics.json")
           if (allStars.includes(d.name)) {
             if (firstHalf.includes(d.Tm)) {
               return (
-                "<div id='positioner-all-star-left'><div id='profile-all-star'> <center><h2 id='all-star-name'>" +
+                "<div id='positioner-all-star-left'><div id=all-star-wrapper-left><div id='profile-all-star'> <center><h2 id='all-star-name'>" +
                 d.name +
                 "</h2></center>" +
                 d.img +
@@ -221,12 +221,13 @@ fetch("data/statistics.json")
                 d.Age +
                 "</div>" +
                 "</div>" +
+                "</div>"+
                 "</div>"
               );
             }
             else {
               return (
-                "<div id='positioner-all-star-right'><div id='profile-all-star'> <center><h2 id='all-star-name'>" +
+                "<div id='positioner-all-star-right'><div id=all-star-wrapper-right><div id='profile-all-star'> <center><h2 id='all-star-name'>" +
                 d.name +
                 "</h2></center>" +
                 d.img +
@@ -281,6 +282,7 @@ fetch("data/statistics.json")
                 "<div>" +
                 "AGE - " +
                 d.Age +
+                "</div>" +
                 "</div>" +
                 "</div>" +
                 "</div>"

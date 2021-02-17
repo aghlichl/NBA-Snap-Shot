@@ -21,6 +21,7 @@
     "lodash": "^4.17.11",
     "mini-css-extract-plugin": "^0.7.0",
     "sass": "^1.22.0",
+    "sass-convert": "^0.5.2",
     "webpack-cli": "^3.2.3"
   },
   "devDependencies": {
