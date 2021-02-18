@@ -26,31 +26,31 @@ D3 Visualization of all NBA Players and their 2018-2019 Statistics
 Originally I planned to have all the player names shown at the start, however I didn't account for the fact that varying screen sizes would be accessing the application. Furthermore, having over 600 full names in a radial tree was extremely difficult to read on a mobile device therefore I decided to implement a queue that would keep track of user node interactions and limit the user to 6 teams open at the same time.
 
 ```js
- function click(d) {
-               counter.getUnique();
+    function click(d) {
+      height = window.innerHeight * 2;
+      counter.getUnique();
 
-                if (d.children) {
-                   if(d.name.length < 4){
-                    counter.filter(word =>{
-
-                    })
-                    d._children = d.children;
-                    d.children = null;
-
-                   }
-                } else {
-                    if (d.name.length < 4) {
-                   counter.push(d)
-                    d.children = d._children;
-                    d._children = null;
-                   if(counter.length > 6){
-                      collapse(counter.shift());
-                   }
-                   }
-                }
-
-                update(d);
-            }
+      if (d.children) {
+        if (d.name.length < 4 && d.name !== "NBA") {
+          counter = removeFromCounter(d, counter);
+          d._children = d.children;
+          d.children = null;
+        }
+      } else {
+        if (d.name.length < 4 && d.name !== "NBA") {
+          counter.push(d);
+          d.children = d._children;
+          d._children = null;
+          if (counter.length > 6) {
+            collapse(counter.shift());
+          }
+        }
+      }
+      if (d.name.length <= 3) {
+        update(d);
+      }
+      update(d);
+    }
 ```
 
 ## Future Direction
