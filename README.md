@@ -18,7 +18,7 @@ D3 Visualization of all NBA Players and their 2018-2019 Statistics
 
 * SVG based visualization built with JavaScript, D3.js, and D3 Tips
 
-![splash](https://s3.amazonaws.com/poly-screenshots.angel.co/Project/b2/955283/d11a8b021a6fee94b095e4805b0aa5f3-original.png)
+![splash](https://i.imgur.com/g5INOy3.png)
 
 
 ## Code Snippets
